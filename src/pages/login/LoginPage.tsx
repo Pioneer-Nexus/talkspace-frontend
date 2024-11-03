@@ -16,20 +16,17 @@ export const LoginPage = () => {
   useKeyboardShortcut([Key.ONE], () => {
     setType((prev: Types) => (prev === Types.signin ? Types.signup : Types.signin))
   })
+
   const handleSignin = () => {
     setType(Types.signin)
   }
+
   const handleSignup = () => {
     setType(Types.signup)
   }
+
   return (
-    <div
-      className={clsx(
-        type === Types.signup && style['sign-up-mode'],
-        style.container,
-        'relative h-screen w-full overflow-hidden bg-white',
-      )}
-    >
+    <div className={clsx(type === Types.signup && style['sign-up-mode'], style.container)}>
       <div className={clsx(style['.forms-container'])}>
         <div className={clsx(style['signin-signup'])}>
           <form className={clsx(style['form-item'], style['sign-in-form'])}>Sign in</form>

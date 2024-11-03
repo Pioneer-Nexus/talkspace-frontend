@@ -3,10 +3,24 @@
   @apply before:absolute before:-top-[10px] before:right-[48%] before:z-[6] before:h-[2000px] before:w-[2000px] before:-translate-y-1/2 before:rounded-[50%] before:bg-gradient-to-tl before:duration-[1.8s] before:ease-in-out before:content-[''];
   @apply before:from-blue-500 before:to-cyan-400;
 }
+.container.sign-up-mode {
+  @apply before:right-[52%] before:-translate-y-1/2 before:translate-x-full;
+}
 @media screen and (max-width: 870px) {
   .container {
     @apply h-screen min-h-[800px];
     @apply before:bottom-[68%] before:left-[30%] before:right-[initial] before:top-[initial] before:h-[1500px] before:w-[1500px] before:-translate-x-1/2 before:translate-y-0 before:duration-[2s] before:ease-in-out;
+  }
+  .container.sign-up-mode {
+    @apply before:bottom-[32%] before:right-[initial] before:-translate-x-1/2 before:translate-y-full;
+  }
+}
+@media screen and (max-width: 570px) {
+  .container {
+    @apply p-6 before:bottom-[72%] before:left-1/2;
+  }
+  .container.sign-up-mode:before {
+    @apply before:bottom-[28%] before:left-1/2;
   }
 }
 .forms-container {
@@ -58,9 +72,7 @@
   @apply translate-x-[800px];
 }
 /* ANIMATION */
-.container.sign-up-mode {
-  @apply before:right-[52%] before:-translate-y-1/2 before:translate-x-full;
-}
+
 .container.sign-up-mode .left-panel .image,
 .container.sign-up-mode .left-panel .content {
   @apply -translate-x-[800px];
@@ -90,10 +102,6 @@
     top: 95%;
     transform: translate(-50%, -100%);
     transition: 1s 0.8s ease-in-out;
-  }
-
-  .container.sign-up-mode:before {
-    @apply before:bottom-[32%] before:right-[initial] before:-translate-x-1/2 before:translate-y-full;
   }
 
   .signin-signup,
@@ -167,18 +175,5 @@
   }
   .panel .content {
     padding: 0.5rem 1rem;
-  }
-  .container {
-    padding: 1.5rem;
-  }
-
-  .container:before {
-    bottom: 72%;
-    left: 50%;
-  }
-
-  .container.sign-up-mode:before {
-    bottom: 28%;
-    left: 50%;
   }
 }

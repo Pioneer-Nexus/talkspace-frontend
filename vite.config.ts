@@ -31,7 +31,6 @@ export default defineConfig(({ mode }) => {
       modules: {
         localsConvention: 'camelCase',
         generateScopedName: (name, filename, css) => {
-          console.log(name)
           if (name === 'dark') return name
           const i = css.indexOf(`.${name}`)
           const lineNumber = css.substring(0, i).split(/[\r\n]/).length
