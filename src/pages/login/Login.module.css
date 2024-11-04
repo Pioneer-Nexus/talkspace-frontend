@@ -1,28 +1,16 @@
 .container {
-  @apply absolute min-h-screen w-full overflow-hidden bg-white;
-  @apply before:absolute before:-top-[10px] before:right-[48%] before:z-[6] before:h-[2000px] before:w-[2000px] before:-translate-y-1/2 before:rounded-[50%] before:bg-gradient-to-tl before:duration-[1.8s] before:ease-in-out before:content-[''];
-  @apply before:from-blue-500 before:to-cyan-400;
+  @apply absolute h-screen min-h-[800px] w-full overflow-hidden bg-white p-6;
+  @apply before:absolute before:bottom-[72%] before:left-1/2 before:z-[6] before:h-[1500px] before:w-[1500px] before:-translate-x-1/2 before:translate-y-0 before:rounded-[50%] before:bg-gradient-to-tl before:from-blue-500 before:to-cyan-400 before:duration-[2s] before:ease-in-out before:content-[''];
+  @apply sm:min-h-screen sm:before:bottom-[68%] sm:before:left-[30%];
+  @apply lg:p-0 lg:before:-top-[10px] lg:before:bottom-[initial] lg:before:left-[initial] lg:before:right-[48%] lg:before:h-[2000px] lg:before:w-[2000px] lg:before:-translate-y-1/2 lg:before:translate-x-0 lg:before:duration-[1.8s];
 }
+
 .container.sign-up-mode {
-  @apply before:right-[52%] before:-translate-y-1/2 before:translate-x-full;
+  @apply before:bottom-[28%] before:left-1/2 before:-translate-x-1/2 before:translate-y-full;
+  @apply sm:before:bottom-[32%];
+  @apply lg:bottom-[initial] lg:before:bottom-[initial] lg:before:left-[initial] lg:before:right-[52%] lg:before:-translate-y-1/2 lg:before:translate-x-full;
 }
-@media screen and (max-width: 870px) {
-  .container {
-    @apply h-screen min-h-[800px];
-    @apply before:bottom-[68%] before:left-[30%] before:right-[initial] before:top-[initial] before:h-[1500px] before:w-[1500px] before:-translate-x-1/2 before:translate-y-0 before:duration-[2s] before:ease-in-out;
-  }
-  .container.sign-up-mode {
-    @apply before:bottom-[32%] before:right-[initial] before:-translate-x-1/2 before:translate-y-full;
-  }
-}
-@media screen and (max-width: 570px) {
-  .container {
-    @apply p-6 before:bottom-[72%] before:left-1/2;
-  }
-  .container.sign-up-mode:before {
-    @apply before:bottom-[28%] before:left-1/2;
-  }
-}
+
 .forms-container {
   @apply absolute left-0 top-0 h-full w-full;
 }
