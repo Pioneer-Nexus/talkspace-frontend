@@ -4,7 +4,6 @@
   @apply sm:min-h-screen sm:before:bottom-[68%] sm:before:left-[30%];
   @apply lg:p-0 lg:before:-top-[10px] lg:before:bottom-[initial] lg:before:left-[initial] lg:before:right-[48%] lg:before:h-[2000px] lg:before:w-[2000px] lg:before:-translate-y-1/2 lg:before:translate-x-0 lg:before:duration-[1.8s];
 }
-
 .container.sign-up-mode {
   @apply before:bottom-[28%] before:left-1/2 before:-translate-x-1/2 before:translate-y-full;
   @apply sm:before:bottom-[32%];
@@ -14,9 +13,26 @@
 .forms-container {
   @apply absolute left-0 top-0 h-full w-full;
 }
-.signin-signup {
-  @apply absolute left-3/4 top-1/2 z-[5] grid w-1/2 -translate-x-1/2 -translate-y-1/2 delay-700 duration-1000 ease-in-out;
-  grid-template-columns: 1fr;
+
+.container .signin-signup {
+  @apply absolute left-3/4 top-1/2 z-[5] grid w-1/2 -translate-x-1/2 -translate-y-1/2 grid-cols-1 delay-700 duration-1000 ease-in-out;
+  /* grid-template-columns: 1fr; */
+}
+.container.sign-up-mode .signin-signup {
+  @apply left-1/4;
+}
+@media screen and (max-width: 870px) {
+  .container .signin-signup {
+    @apply left-1/2 top-[95%] w-full -translate-x-1/2 -translate-y-full delay-[0.8s] duration-1000 ease-in-out;
+  }
+
+  .container.sign-up-mode .signin-signup {
+    @apply left-1/2;
+  }
+
+  .container.sign-up-mode .signin-signup {
+    @apply top-[5%] -translate-x-1/2 translate-y-0;
+  }
 }
 .form-item {
   @apply flex flex-col items-center overflow-hidden transition-[all] delay-700 duration-200 ease-linear;
@@ -65,9 +81,6 @@
 .container.sign-up-mode .left-panel .content {
   @apply -translate-x-[800px];
 }
-.container.sign-up-mode .signin-signup {
-  @apply left-1/4;
-}
 .container.sign-up-mode .form-item.sign-up-form {
   @apply z-[1] opacity-100;
 }
@@ -85,17 +98,6 @@
   @apply pointer-events-auto;
 }
 @media (max-width: 870px) {
-  .signin-signup {
-    width: 100%;
-    top: 95%;
-    transform: translate(-50%, -100%);
-    transition: 1s 0.8s ease-in-out;
-  }
-
-  .signin-signup,
-  .container.sign-up-mode .signin-signup {
-    left: 50%;
-  }
   .panels-container {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 2fr 1fr;
@@ -145,11 +147,6 @@
   .right-panel .image,
   .right-panel .content {
     transform: translateY(300px);
-  }
-
-  .container.sign-up-mode .signin-signup {
-    top: 5%;
-    transform: translate(-50%, 0);
   }
 }
 
