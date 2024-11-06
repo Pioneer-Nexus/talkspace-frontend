@@ -55,7 +55,9 @@ export const LoginPage = () => {
               Sign in
             </button>
           </div>
-          <LoginImage className={style.image} />
+          <div className={style.image}>
+            <LoginImage className={style.image} />
+          </div>
         </div>
       </div>
     </div>
