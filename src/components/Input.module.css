@@ -1,0 +1,20 @@
+    .input__wrapper {
+        @apply text-sm border flex border-slate-300 relative items-center px-2 gap-x-1 rounded transition-all ease-linear;
+    }
+
+    .input__wrapper:focus-within {
+        @apply border-green-600;
+    }
+
+
+    .placeholder {
+        @apply absolute left-8 text-base transition-all ease-linear bg-white;
+    }
+
+    .input {
+        @apply px-1 py-2 w-full text-sm outline-none
+    }
+
+    .input__wrapper:focus-within .placeholder {
+        @apply text-xs top-[-20%];
+    }
