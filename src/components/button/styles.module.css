@@ -1,0 +1,23 @@
+button.size-small {
+  @apply px-[7px] py-0;
+}
+button.size-large {
+  @apply px-[15px] py-[7px];
+}
+
+button.icon-position-end {
+  @apply flex-row-reverse;
+}
+button.only-icon {
+  @apply rounded-full;
+}
+
+button.type-primary {
+  @apply bg-blue-600 text-white hover:bg-blue-500;
+}
+button.type-text {
+  @apply border-transparent bg-transparent hover:bg-slate-100;
+}
+button.type-link {
+  @apply border-transparent bg-transparent text-blue-600 hover:text-blue-500;
+}
