@@ -1,6 +1,5 @@
-import RegisterImage from '@/assets/images/svgs/register.svg'
+import SearchIcon from '@/assets/images/svgs/search.svg'
 import { Button } from '@/components/button'
-import { ButtonIconPosition, ButtonSize, ButtonType } from '@/interfaces/components'
 import { FC } from 'react'
 export const InitialPage: FC = () => {
   return (
@@ -8,24 +7,41 @@ export const InitialPage: FC = () => {
       <div className={'flex flex-wrap items-end gap-4 p-4'}>
         <div className={'w-full'}>Type</div>
         <Button>Text</Button>
-        <Button type={ButtonType.PRIMARY}>Text</Button>
-        <Button type={ButtonType.TEXT}>Text</Button>
-        <Button type={ButtonType.LINK}>Text</Button>
+        <Button type='primary'>Text</Button>
+        <Button type='text'>Text</Button>
+        <Button type='link'>Text</Button>
       </div>
       <div className={'flex flex-wrap items-end gap-4 p-4'}>
         <div className={'w-full'}>Having Icon</div>
         <Button>Text</Button>
-        <Button icon={<RegisterImage style={{ width: 20 }} />}>Text</Button>
-        <Button icon={<RegisterImage style={{ width: 20 }} />} />
-        <Button iconPosition={ButtonIconPosition.END} icon={<RegisterImage style={{ width: 20 }} />}>
+        <Button icon={<SearchIcon style={{ width: 16, height: 16 }} />}>Text</Button>
+      </div>
+      <div className={'flex flex-wrap items-end gap-4 p-4'}>
+        <div className={'w-full'}>Icon Position</div>
+        <Button icon={<SearchIcon style={{ width: 16, height: 16 }} />}>Text</Button>
+        <Button iconPosition='end' icon={<SearchIcon style={{ width: 16, height: 16 }} />}>
           Text
         </Button>
       </div>
       <div className={'flex flex-wrap items-end gap-4 p-4'}>
         <div className={'w-full'}>Size</div>
-        <Button size={ButtonSize.LARGE}>Text</Button>
+        <Button size='large'>Text</Button>
         <Button>Text</Button>
-        <Button size={ButtonSize.SMALL}>Text</Button>
+        <Button size='small'>Text</Button>
+      </div>
+      <div className={'flex flex-wrap items-end gap-4 p-4'}>
+        <div className={'w-full'}>Disabled</div>
+        <Button disabled>Text</Button>
+      </div>
+      <div className={'flex flex-wrap items-end gap-4 p-4'}>
+        <div className={'w-full'}>Loading</div>
+        <Button loading>Text</Button>
+      </div>
+      <div className={'flex flex-wrap items-end gap-4 p-4'}>
+        <div className={'w-full'}>Shape</div>
+        <Button icon={<SearchIcon style={{ width: 16, height: 16 }} />} />
+        <Button icon={<SearchIcon style={{ width: 16, height: 16 }} />} shape='round' />
+        <Button icon={<SearchIcon style={{ width: 16, height: 16 }} />} shape='circle' />
       </div>
     </>
   )

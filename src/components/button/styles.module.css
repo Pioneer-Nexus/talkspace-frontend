@@ -12,12 +12,27 @@ button.only-icon {
   @apply rounded-full;
 }
 
+button.type-default {
+  @apply hover:border-blue-500 hover:text-blue-500 active:border-blue-700 active:text-blue-700;
+}
 button.type-primary {
-  @apply bg-blue-600 text-white hover:bg-blue-500;
+  @apply border-blue-600 bg-blue-600 text-white hover:bg-blue-500 hover:text-white active:border-blue-700 active:bg-blue-700;
 }
 button.type-text {
-  @apply border-transparent bg-transparent hover:bg-slate-100;
+  @apply border-transparent bg-transparent hover:border-transparent hover:bg-gray-100 active:bg-gray-200;
 }
 button.type-link {
-  @apply border-transparent bg-transparent text-blue-600 hover:text-blue-500;
+  @apply border-transparent bg-transparent text-blue-600 hover:border-transparent hover:text-blue-500 active:text-blue-700;
+}
+
+button.disabled {
+  @apply cursor-not-allowed border-gray-400 bg-gray-200 text-gray-400 hover:border-gray-400 hover:bg-gray-200 hover:text-gray-400;
+}
+button.loading {
+  @apply cursor-auto border-blue-400 bg-blue-400 text-white;
+  @apply hover:border-blue-300 hover:bg-blue-300 hover:text-white active:border-blue-500 active:bg-blue-500;
+}
+
+button.circle {
+  @apply w-8 px-0;
 }
