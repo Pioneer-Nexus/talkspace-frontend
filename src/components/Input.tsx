@@ -1,42 +1,46 @@
-import { FC } from 'react'
+import PasswordImage from '@/assets/images/svgs/passowrd_icon.svg'
+import { ChangeEvent, FC } from 'react'
 import styles from './Input.module.css'
-import PasswordImage from '@/assets/images/svgs/passowrd_icon.svg';
+
+type InputType = 'text' | 'number' | 'email'
 interface InputProps {
-  type?: string
-  state?: string
+  type: InputType
   placeholder?: string
-  handleValidation?: () => void
-  onChange?: () => void,
-  className?: string,
-  onBlur?: () => {},
-  onFocus?: () => {},
-  errorMessage?: string,
-  isError?: boolean,
-  style?: object
+  errorMessage?: string
+  isError?: boolean
+  value: string
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void
+  onBlur?: () => void
+  onFocus?: () => void
 }
 
 export const Input: FC<InputProps> = (props) => {
   const {
-    type = 'text',
-    state = "",
+    type,
     placeholder = '',
+    errorMessage = '* đá',
+    isError = false,
+    value,
     onChange = () => {},
-    className = "",
     onBlur = () => {},
     onFocus = () => {},
-    errorMessage = "* đá",
-    isError = false,
-    style = {}
-  } = props;
+  } = props
 
   return (
     <>
-      <div style={style} className={`${styles['input__wrapper']} ${className} ${isError ? styles["error"] : ""}`}>
-        <PasswordImage className='h-3.5 w-auto'/>
-        <input className={`${styles["input"]}`} onChange={onChange} value={state}  type={type} onBlur={onBlur} onFocus={onFocus}/>
-        <div className={`${styles['placeholder']}`}>{placeholder}</div>
+      <div className={`${styles['input__wrapper']} ${isError ? styles['error'] : ''}`}>
+        <PasswordImage className='h-3.5 w-auto' />
+        <input
+          className={styles['input']}
+          onChange={onChange}
+          value={value}
+          type={type}
+          onBlur={onBlur}
+          onFocus={onFocus}
+        />
+        <div className={styles['placeholder']}>{placeholder}</div>
       </div>
-      <p className={`${styles["error-msg"]}`}>{errorMessage ? errorMessage : ""}</p>
+      <p className={styles['error-msg']}>{errorMessage ? errorMessage : ''}</p>
     </>
   )
 }
