@@ -5,6 +5,7 @@ import { Key } from '@/interfaces'
 import clsx from 'clsx'
 import { useState } from 'react'
 import style from './Login.module.css'
+
 enum Types {
   signin = 'signin',
   signup = 'signup',

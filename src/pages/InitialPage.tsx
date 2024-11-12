@@ -42,6 +42,14 @@ export const InitialPage: FC = () => {
         <Button icon={<SearchIcon style={{ width: 16, height: 16 }} />} />
         <Button icon={<SearchIcon style={{ width: 16, height: 16 }} />} shape='round' />
         <Button icon={<SearchIcon style={{ width: 16, height: 16 }} />} shape='circle' />
+
+        <Button size='small' icon={<SearchIcon style={{ width: 16, height: 16 }} />} />
+        <Button size='small' icon={<SearchIcon style={{ width: 16, height: 16 }} />} shape='round' />
+        <Button size='small' icon={<SearchIcon style={{ width: 16, height: 16 }} />} shape='circle' />
+
+        <Button size='large' icon={<SearchIcon style={{ width: 16, height: 16 }} />} />
+        <Button size='large' icon={<SearchIcon style={{ width: 16, height: 16 }} />} shape='round' />
+        <Button size='large' icon={<SearchIcon style={{ width: 16, height: 16 }} />} shape='circle' />
       </div>
     </>
   )
