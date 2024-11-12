@@ -35,14 +35,14 @@ export const Button: FC<ButtonProps> = (props) => {
   return (
     <button
       className={clsx(
-        'flex items-center justify-center gap-2 rounded border px-[15px] py-[4px] text-[14px] leading-[22px] transition-colors duration-300',
+        'inline-flex h-8 items-center justify-center gap-2 rounded border px-[15px] py-[4px] text-[14px] leading-[22px] transition-colors duration-300',
+        !children && styles['only-icon'],
         styles[`type-${type}`],
         styles[`icon-position-${iconPosition}`],
         styles[`size-${size}`],
-        !children && styles['only-icon'],
+        styles[`shape-${shape}`],
         disabled && styles['disabled'],
         loading && styles['loading'],
-        styles[shape],
       )}
     >
       {loading && <LoadingIcon fill='white' />}
