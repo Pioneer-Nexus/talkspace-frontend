@@ -25,7 +25,9 @@ export const BaseRoutes = () => {
             onChange={() => {}}
             placeholder='Name'
             type='text'
-            value=''
+            style={{
+              width: "50%"
+            }}
           />} path='/input' />
         </Route>
       </Routes>

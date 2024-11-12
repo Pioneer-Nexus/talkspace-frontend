@@ -18,3 +18,18 @@
     .input__wrapper:focus-within .placeholder {
         @apply text-xs top-[-20%];
     }
+    
+    .error-msg {
+        @apply hidden
+    }
+    .error .error-msg {
+        @apply text-red-500 block
+    }
+
+    .input__wrapper.error {
+        @apply border-red-500
+    }
+
+    .error svg {
+        stroke: red;
+    }
