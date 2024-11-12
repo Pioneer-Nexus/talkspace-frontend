@@ -4,5 +4,6 @@ declare namespace JSX {
     height?: number | string
     className?: string
     style?: object
+    fill?: string
   }
 }
