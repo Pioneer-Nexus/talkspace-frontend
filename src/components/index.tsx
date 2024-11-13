@@ -1,2 +1,2 @@
-import './Button'
-import './modal'
+export * from './button'
+export * from './modal'

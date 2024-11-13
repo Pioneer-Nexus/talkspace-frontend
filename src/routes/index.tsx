@@ -1,3 +1,4 @@
+import { ButtonTestPage } from '@/pages/test/button'
 import { Outlet, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import { InitialLayout } from '../layouts/InitialLayout'
 import { NotFound } from '../pages'
@@ -18,6 +19,9 @@ export const BaseRoutes = () => {
         >
           <Route element={<InitialPage />} path='/' />
           <Route element={<LoginPage />} path='/sign-in' />
+          <Route path='test'>
+            <Route path='button' element={<ButtonTestPage />} />
+          </Route>
           <Route element={<NotFound />} path='*' />
         </Route>
       </Routes>
