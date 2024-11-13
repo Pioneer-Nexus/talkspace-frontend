@@ -17,6 +17,7 @@ interface ButtonProps extends PropsWithChildren {
   href?: string
   disabled?: boolean
   loading?: boolean
+  block?: boolean
   onClick?: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
 }
 
@@ -30,23 +31,40 @@ export const Button: FC<ButtonProps> = (props) => {
     icon,
     disabled,
     loading,
+    href,
+    block,
+    onClick,
   } = props
 
+  const commonProps = {
+    className: clsx(
+      styles['button'],
+      !children && styles['only-icon'],
+      styles[`type-${type}`],
+      styles[`icon-position-${iconPosition}`],
+      styles[`size-${size}`],
+      styles[`shape-${shape}`],
+      disabled && styles['disabled'],
+      loading && styles['loading'],
+      block && styles['block'],
+    ),
+    onClick,
+  }
+
+  if (href) {
+    return (
+      <a {...commonProps} href={href}>
+        {loading && <LoadingIcon className={styles[`svg-${type}`]} />}
+        {icon && icon}
+        {children}
+      </a>
+    )
+  }
+
   return (
-    <button
-      className={clsx(
-        'inline-flex h-8 items-center justify-center gap-2 rounded border px-[15px] py-[4px] text-[14px] leading-[22px] transition-colors duration-300',
-        !children && styles['only-icon'],
-        styles[`type-${type}`],
-        styles[`icon-position-${iconPosition}`],
-        styles[`size-${size}`],
-        styles[`shape-${shape}`],
-        disabled && styles['disabled'],
-        loading && styles['loading'],
-      )}
-    >
-      {loading && <LoadingIcon fill='white' />}
-      {icon && icon}
+    <button {...commonProps}>
+      {loading && <LoadingIcon className={styles[`svg-${type}`]} />}
+      {!!icon && !loading && icon}
       {children}
     </button>
   )
