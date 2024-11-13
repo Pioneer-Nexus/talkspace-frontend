@@ -68,7 +68,9 @@ export const ButtonTestPage = () => {
       </div>
       <div className={'inline-flex w-full flex-wrap items-end gap-2 border-b-[1px] border-zinc-400 p-2'}>
         <div className={'w-full'}>Link</div>
-        <Button block>Text</Button>
+        <Button block type='primary'>
+          Text
+        </Button>
         <Button block>Text</Button>
       </div>
     </>
