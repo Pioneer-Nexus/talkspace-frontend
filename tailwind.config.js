@@ -18,13 +18,7 @@ export default {
       borderColor: {
         'custom-1': 'rgba(255, 255, 255, 0.125)'
       },
-      fontSize: {
-        "14px": "14px",
-      },
-      inset: {
-        '-20%': '-20%',
-      },
-    }
+    },
   },
   darkMode: ['selector'],
   plugins: [],
