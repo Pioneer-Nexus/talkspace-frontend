@@ -39,7 +39,6 @@ export const Button: FC<ButtonProps> = (props) => {
   const commonProps = {
     className: clsx(
       styles['button'],
-      !children && styles['only-icon'],
       styles[`type-${type}`],
       styles[`icon-position-${iconPosition}`],
       styles[`size-${size}`],
