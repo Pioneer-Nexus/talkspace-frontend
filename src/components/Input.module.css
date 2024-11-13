@@ -1,9 +1,9 @@
     .input__wrapper {
-        @apply text-sm border flex border-slate-300 relative items-center px-2 gap-x-1 rounded transition-all ease-linear;
+        @apply text-sm border flex border-slate-300 relative items-center px-2 gap-x-1 rounded transition-all ease-linear transition-all duration-200 ease-linear;
     }
 
     .input__wrapper:focus-within {
-        @apply border-green-600;
+        @apply border-t-[1px] border-solid border-[#49d3ff] shadow-[0px_0px_8px_0px_#03A8DC];
     }
 
 
@@ -15,9 +15,9 @@
         @apply px-1 py-2 w-full text-sm outline-none
     }
 
-    .input__wrapper:focus-within .placeholder {
-        @apply text-xs top-[-20%];
-    }
+    /* .input__wrapper:focus-within .placeholder {
+        @apply text-xs top-[-20%] ;
+    } */
     
     .error-msg {
         @apply hidden

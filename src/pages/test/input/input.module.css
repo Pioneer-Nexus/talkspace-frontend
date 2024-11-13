@@ -1,0 +1,7 @@
+.wrapper > div{
+    @apply flex flex-row flex-wrap gap-[16px] border-b-[1px] border-[#000] py-[16px] ps-[16px];
+}
+
+.wrapper h4 {
+    @apply mt-4 ps-[4px]
+}

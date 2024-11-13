@@ -2,25 +2,31 @@ import PasswordImage from '@/assets/images/svgs/passowrd_icon.svg'
 import { ChangeEvent, FC } from 'react'
 import styles from './Input.module.css'
 
-type InputType = 'text' | 'number' | 'email'
+type InputType = 'text' | 'number' | 'email' | "password";
+type Status = "default" | "error" | "warning" | "success"
+type Size = "default" | "large" | "small"
 interface InputProps {
-  type: InputType
+  type?: InputType
   placeholder?: string
   errorMessage?: string
-  isError?: boolean
-  value: string
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void
+  status?: Status
+  value?: string,
+  size?: Size,
+  style?:  object,
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
   onBlur?: () => void
   onFocus?: () => void
 }
 
 export const Input: FC<InputProps> = (props) => {
   const {
-    type,
-    placeholder = '',
-    errorMessage = '* đá',
-    isError = false,
+    type = "text",
+    placeholder = 'text',
+    errorMessage = '',
+    status = "default",
     value,
+    style,
+    size = "default",
     onChange = () => {},
     onBlur = () => {},
     onFocus = () => {},
@@ -28,7 +34,7 @@ export const Input: FC<InputProps> = (props) => {
 
   return (
     <>
-      <div className={`${styles['input__wrapper']} ${isError ? styles['error'] : ''}`}>
+      <div style={style} className={`${styles['input__wrapper']} ${styles[size]} ${status ? styles[status] : ''}`}>
         <PasswordImage className='h-3.5 w-auto' />
         <input
           className={styles['input']}
@@ -37,8 +43,9 @@ export const Input: FC<InputProps> = (props) => {
           type={type}
           onBlur={onBlur}
           onFocus={onFocus}
+          placeholder={placeholder}
         />
-        <div className={styles['placeholder']}>{placeholder}</div>
+        {/* <div className={styles['placeholder']}>{placeholder}</div> */}
       </div>
       <p className={styles['error-msg']}>{errorMessage ? errorMessage : ''}</p>
     </>

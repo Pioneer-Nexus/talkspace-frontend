@@ -4,6 +4,8 @@ import { InitialLayout } from '../layouts/InitialLayout'
 import { NotFound } from '../pages'
 import { InitialPage } from '../pages/InitialPage'
 import { LoginPage } from '../pages/login/LoginPage'
+import { TestPage } from '@/pages/TestPage'
+import InputTest from '@/pages/test/input'
 
 export const BaseRoutes = () => {
   return (
@@ -24,6 +26,7 @@ export const BaseRoutes = () => {
           </Route>
           <Route element={<NotFound />} path='*' />
           <Route element={<TestPage />} path='/test' />
+          <Route element={<InputTest/>} path='/test/input' />
         </Route>
       </Routes>
     </Router>
