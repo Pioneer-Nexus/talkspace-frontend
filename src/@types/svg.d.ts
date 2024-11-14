@@ -5,5 +5,6 @@ declare namespace JSX {
     className?: string
     style?: object
     fill?: string
+    fontSize?: number | string
   }
 }

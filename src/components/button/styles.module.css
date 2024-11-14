@@ -13,7 +13,7 @@ a.size-small {
   @apply flex-row-reverse;
 }
 .button.icon-position-top {
-  @apply flex-col;
+  @apply flex-col gap-0;
 }
 
 .button.type-default {
