@@ -2,26 +2,52 @@
         @apply text-sm border flex border-slate-300 relative items-center px-2 gap-x-1 rounded transition-all ease-linear transition-all duration-200 ease-linear;
     }
 
+    .input__wrapper.large {
+        @apply h-[40px]
+    }
+
+    .input__wrapper.default {
+        @apply h-[32px]
+    }
+
+    .input__wrapper.small {
+        @apply h-[24px]
+    }
+
     .input__wrapper:focus-within {
         @apply border-t-[1px] border-solid border-[#49d3ff] shadow-[0px_0px_8px_0px_#03A8DC];
     }
 
-
-    .placeholder {
-        @apply absolute left-8 text-base transition-all ease-linear bg-white;
+    .input__wrapper.disabled {
+        @apply cursor-not-allowed text-[#00000040] bg-[#0000000a] border-[#d9d9d9]
     }
 
+    .input__wrapper.error {
+        @apply shadow-none border-[#ff4d4f] 
+    }
+
+    .input__wrapper.warning {
+        @apply shadow-none border-[#FADB14] 
+    }
+
+    /* input */
     .input {
-        @apply px-1 py-2 w-full text-sm outline-none
+        @apply px-1 py-2 h-full w-full text-sm outline-none
+    }
+    
+    .input:disabled {
+        @apply cursor-not-allowed;
     }
 
-    /* .input__wrapper:focus-within .placeholder {
-        @apply text-xs top-[-20%] ;
-    } */
+    .eye__icon {
+        @apply h-3.5 w-auto cursor-pointer
+    }
     
+    /* message */
     .error-msg {
         @apply hidden
     }
+
     .error .error-msg {
         @apply text-red-500 block
     }
@@ -30,6 +56,3 @@
         @apply border-red-500
     }
 
-    .error svg {
-        stroke: red;
-    }
