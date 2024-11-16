@@ -4,10 +4,18 @@ import LogoIcon2 from '@/assets/images/svgs/logo2.svg'
 import LogoutIcon from '@/assets/images/svgs/logout.svg'
 import UserIcon from '@/assets/images/svgs/user.svg'
 import { FC } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Avatar } from '../avatar'
 import { Button } from '../button'
 
 export const DashboardSidebar: FC = () => {
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    console.log('click')
+    navigate('/sign-in')
+  }
+
   return (
     <div className='flex h-screen w-20 flex-col items-center justify-between bg-gray-400 p-2'>
       <div className='items-middle flex flex-col items-center gap-4'>
@@ -23,7 +31,7 @@ export const DashboardSidebar: FC = () => {
       </div>
       <div className='flex flex-col space-y-1'>
         <Button type='text' icon={<UserIcon fontSize='24' />} shape='circle' size='large' />
-        <Button type='text' icon={<LogoutIcon fontSize='24' />} shape='circle' size='large' />
+        <Button type='text' icon={<LogoutIcon fontSize='24' />} shape='circle' size='large' onClick={handleLogout} />
       </div>
     </div>
   )

@@ -15,7 +15,7 @@ i18n
   .use(initReactI18next) // bind react-i18next to the instance
   .init({
     fallbackLng: Languages.VI,
-    debug: true,
+    debug: false,
     resources: resources,
     // react i18next special options (optional)
     // override if needed - omit if ok with defaults
