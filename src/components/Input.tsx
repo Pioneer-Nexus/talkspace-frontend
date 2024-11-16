@@ -7,6 +7,7 @@ import clsx from 'clsx'
 type InputType = 'text' | 'number' | 'email' | 'password'
 type Status = 'error' | 'warning' | 'success'
 type Size = 'default' | 'large' | 'small'
+type PositionTitle = "top" | "left"
 interface InputProps {
   type?: InputType
   placeholder?: string
@@ -17,6 +18,9 @@ interface InputProps {
   style?: object
   icon?: JSX.Element
   disabled?: boolean
+  width?: string
+  positionTitle?: PositionTitle,
+  title?: string,
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
   onBlur?: (event: ChangeEvent<HTMLInputElement>) => void
   onFocus?: (event: ChangeEvent<HTMLInputElement>) => void
@@ -28,16 +32,18 @@ export const Input: FC<InputProps> = (props) => {
     placeholder = 'text',
     errorMessage = '',
     status = '',
-    value = "",
+    value = '',
     style,
     size = 'default',
     icon = <></>,
     disabled = false,
+    width = "100%",
+    positionTitle = "top",
+    title = "",
     onChange = () => {},
     onBlur = () => {},
     onFocus = () => {},
   } = props
-
 
   const [typeInput, setTypeInput] = useState<InputType>(type)
 
@@ -64,19 +70,19 @@ export const Input: FC<InputProps> = (props) => {
   }
 
   return (
-    <>
-      <div style={style} className={clsx(
-        styles['input__wrapper'], 
-        styles[size], status ? styles[status] : '', 
-        disabled && styles['disabled']
-        )}>
+    <section style={{
+      width: width,
+      ...style
+    }}
+      className={clsx(styles[positionTitle])}
+    >
+      {title ? <span className={clsx(styles['title'])}>{title}</span> : <></>}
+      <div className={clsx(styles['input__wrapper'], styles[size], status ? styles[status] : '', disabled && styles['disabled'])}>
         {icon}
-        <input
-          {...commonProps}
-        />
+        <input {...commonProps} />
         <div onClick={handleShowNHidePassword}>{renderIconHideNShowPassword()}</div>
       </div>
       <p className={styles['error-msg']}>{errorMessage ? errorMessage : ''}</p>
-    </>
+    </section>
   )
 }

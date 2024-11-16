@@ -1,3 +1,20 @@
+    
+    .top .title{
+        @apply mb-[8px] block
+    }
+    
+    section.left {
+        @apply flex items-center
+    }
+
+    .left .title {
+        @apply me-[8px] w-max min-w-max
+    }
+
+    .left .input__wrapper {
+        @apply w-full
+    }
+
     .input__wrapper {
         @apply text-sm border flex border-slate-300 relative items-center px-2 gap-x-1 rounded transition-all ease-linear transition-all duration-200 ease-linear;
     }

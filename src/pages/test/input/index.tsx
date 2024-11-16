@@ -99,6 +99,62 @@ const InputTest = () => {
           />
         </div>
       </div>
+      <div className={`${styles['wrapper']}`}>
+        <h4>Width 100%</h4>
+        <div>
+          <Input
+            placeholder={'Width 100%'}
+          />
+        </div>
+      </div>
+      <div className={`${styles['wrapper']}`}>
+        <h4>Title</h4>
+        <div>
+          <Input
+            width='50%'
+            title='title top'
+            positionTitle='top'
+            placeholder={'Title top'}
+          />
+          <Input
+          width='50%'
+            title='title left'
+            positionTitle='left'
+            placeholder={'Title top'}
+          />
+        </div>
+      </div>
+      <div className={`${styles['wrapper']}`}>
+        <h4>Type</h4>
+        <div>
+          <Input
+            title='Text'
+            positionTitle='top'
+            type='text'
+            width='50%'
+          />
+          <Input
+            title='Email'
+            positionTitle='top'
+            type='email'
+            width='50%'
+            value='abc@gmail.com'
+          />
+          <Input
+            title='Number'
+            positionTitle='top'
+            type='number'
+            width='50%'
+            value='0988486443'
+          />
+          <Input
+            title='Password'
+            positionTitle='top'
+            type='password'
+            value='12345678'
+          />
+        </div>
+      </div>
     </>
   )
 }
