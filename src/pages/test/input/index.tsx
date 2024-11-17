@@ -2,8 +2,97 @@ import { Input } from '@/components'
 import PasswordImage from '@/assets/images/svgs/passowrd_icon.svg'
 
 import styles from './input.module.css'
+import { ChangeEvent, useState } from 'react'
+import { validatePhoneNumber } from '@/utils'
+
+type Status = "" |'error' | 'warning' | 'success'
+
+type TextInput = {
+  value: string,
+  status: Status,
+  message: string,
+  validate: boolean
+}
 
 const InputTest = () => {
+  const [text, setText] = useState<TextInput>({
+    value: "",
+    status: "",
+    message: "",
+    validate: true
+  })
+  const [email, setEmail] = useState<TextInput>({
+    value: "",
+    status: "",
+    message: "",
+    validate: true
+  })
+  const [phoneNumber, setPhoneNumber] = useState<TextInput>({
+    value: "",
+    status: "",
+    message: "",
+    validate: true
+  })
+  const [password, setPassword] = useState<TextInput>({
+    value: "",
+    status: "",
+    message: "",
+    validate: true
+  })
+
+  const handleOnChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value.replace("  ", " ");
+    if(value.startsWith(" ")) value.trim();
+    if(value.length >= 8 || value.length === 0) {
+      setPassword({
+        ...password,
+        status: "",
+        message: "",
+        value: value
+      })
+    } else {
+      setPassword({
+        ...password,
+        status: "warning",
+        message: "* Weak",
+        value: value
+      })
+    }
+  }
+
+  const handleOnChangePhoneNumber = (event: ChangeEvent<HTMLInputElement>) => {
+    let status: Status = "";
+    let message: string = "";
+
+    const value = event.target.value.replace("  ", " ");
+    if(value.startsWith(" ")) value.trim();
+    if(value.length === 0) {
+      status = "";
+      message = "";
+      setPhoneNumber({
+        ...phoneNumber,
+        status: status,
+        message: message,
+        value: value
+      })
+      return
+    }
+    const isValidatePhoneNumber = validatePhoneNumber(value);
+    if(isValidatePhoneNumber) {
+        status = "";
+        message = "";
+    } else {
+      status = "error";
+      message = "* Phone number not validate";
+    }
+    setPhoneNumber({
+      ...phoneNumber,
+      status: status,
+      message: message,
+      value: value
+    })
+  }
+
   return (
     <>
       <div className={`${styles['wrapper']}`}>
@@ -64,19 +153,6 @@ const InputTest = () => {
             }}
             placeholder={'Small Size'}
             size='small'
-          />
-        </div>
-      </div>
-      <div className={`${styles['wrapper']}`}>
-        <h4>Password</h4>
-        <div>
-          <Input
-            style={{
-              width: '400px',
-            }}
-            value='password'
-            type='password'
-            placeholder={'Password'}
           />
         </div>
       </div>
@@ -152,6 +228,61 @@ const InputTest = () => {
             positionTitle='top'
             type='password'
             value='12345678'
+          />
+        </div>
+      </div>
+      <div className={`${styles['wrapper']}`}>
+        <h4>simulate</h4>
+        <div>
+          <Input
+            title='Text'
+            positionTitle='top'
+            type='text'
+            placeholder='Text'
+            width='25%'
+            value={text.value}
+            onChange={(e) => {
+              setText({
+                ...text,
+                value: e.target.value
+              })
+            }}
+          />
+          <Input
+            title='Email'
+            positionTitle='top'
+            type='email'
+            placeholder='Email'
+            width='25%'
+            value={email.value}
+            onChange={(e) => {
+              setEmail({
+                ...email,
+                value: e.target.value
+              })
+            }}
+          />
+          <Input
+            title='Phone Number'
+            positionTitle='top'
+            type='number'
+            placeholder='Phone Number'
+            status={phoneNumber.status}
+            message={phoneNumber.message}
+            width='25%'
+            value={phoneNumber.value}
+            onChange={handleOnChangePhoneNumber}
+          />
+          <Input
+            width='25%'
+            title='Password'
+            placeholder='Password'
+            positionTitle='top'
+            type='password'
+            status={password.status}
+            value={password.value}
+            message={password.message}
+            onChange={handleOnChangePassword}
           />
         </div>
       </div>

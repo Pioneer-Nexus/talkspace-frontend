@@ -5,13 +5,13 @@ import ShowPassword from '@/assets/images/svgs/show_pass.svg'
 import clsx from 'clsx'
 
 type InputType = 'text' | 'number' | 'email' | 'password'
-type Status = 'error' | 'warning' | 'success'
+type Status = "" |'error' | 'warning' | 'success'
 type Size = 'default' | 'large' | 'small'
 type PositionTitle = "top" | "left"
 interface InputProps {
   type?: InputType
   placeholder?: string
-  errorMessage?: string
+  message?: string
   status?: Status
   value?: string
   size?: Size
@@ -30,7 +30,7 @@ export const Input: FC<InputProps> = (props) => {
   const {
     type = 'text',
     placeholder = 'text',
-    errorMessage = '',
+    message = '',
     status = '',
     value = '',
     style,
@@ -74,15 +74,17 @@ export const Input: FC<InputProps> = (props) => {
       width: width,
       ...style
     }}
-      className={clsx(styles[positionTitle])}
+      className={clsx(styles[positionTitle], status ? styles[status] : '')}
     >
       {title ? <span className={clsx(styles['title'])}>{title}</span> : <></>}
-      <div className={clsx(styles['input__wrapper'], styles[size], status ? styles[status] : '', disabled && styles['disabled'])}>
+      <div className={clsx(styles['input__wrapper'], styles[size], disabled && styles['disabled'])}>
         {icon}
         <input {...commonProps} />
         <div onClick={handleShowNHidePassword}>{renderIconHideNShowPassword()}</div>
       </div>
-      <p className={styles['error-msg']}>{errorMessage ? errorMessage : ''}</p>
+      {
+        message ? <p className={clsx(styles['msg'])}>{message}</p> : <></>
+      }
     </section>
   )
 }
