@@ -1,26 +1,25 @@
+import EyeIcon from '@/assets/images/svgs/eye.svg'
+import EyeOffIcon from '@/assets/images/svgs/eye_off.svg'
+import clsx from 'clsx'
 import { ChangeEvent, FC, useState } from 'react'
 import styles from './Input.module.css'
-import HidePassword from '@/assets/images/svgs/hide_pass.svg'
-import ShowPassword from '@/assets/images/svgs/show_pass.svg'
-import clsx from 'clsx'
 
 type InputType = 'text' | 'number' | 'email' | 'password'
-type Status = "" |'error' | 'warning' | 'success'
-type Size = 'default' | 'large' | 'small'
-type PositionTitle = "top" | "left"
+type StatusInput = 'info' | 'error' | 'warning' | 'success'
+type SizeInput = 'default' | 'large' | 'small'
+type TitlePosition = 'top' | 'left'
 interface InputProps {
   type?: InputType
   placeholder?: string
   message?: string
-  status?: Status
+  status?: StatusInput
   value?: string
-  size?: Size
+  size?: SizeInput
   style?: object
   icon?: JSX.Element
   disabled?: boolean
-  width?: string
-  positionTitle?: PositionTitle,
-  title?: string,
+  titlePosition?: TitlePosition
+  title?: string
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
   onBlur?: (event: ChangeEvent<HTMLInputElement>) => void
   onFocus?: (event: ChangeEvent<HTMLInputElement>) => void
@@ -28,63 +27,53 @@ interface InputProps {
 
 export const Input: FC<InputProps> = (props) => {
   const {
-    type = 'text',
-    placeholder = 'text',
-    message = '',
-    status = '',
-    value = '',
-    style,
-    size = 'default',
-    icon = <></>,
     disabled = false,
-    width = "100%",
-    positionTitle = "top",
-    title = "",
+    icon,
+    message = '',
+    placeholder = '',
+    size = 'default',
+    status = 'info',
+    style,
+    title = '',
+    type = 'text',
+    value = '',
+    titlePosition = 'top',
     onChange = () => {},
     onBlur = () => {},
     onFocus = () => {},
   } = props
 
-  const [typeInput, setTypeInput] = useState<InputType>(type)
+  const [inputType, setInputType] = useState<InputType>(type)
 
   const commonProps = {
     className: clsx(styles['input']),
     value: value,
-    type: typeInput,
+    type: inputType,
     placeholder: placeholder,
     disabled: disabled,
     onChange: onChange,
     onBlur: onBlur,
     onFocus: onFocus,
   }
-  const renderIconHideNShowPassword = () => {
-    if (type === 'password') {
-      return typeInput === 'password' ? <HidePassword className={`${styles['eye__icon']}`} /> : <ShowPassword className={`${styles['eye__icon']}`} />
-    }
-  }
 
-  const handleShowNHidePassword = () => {
-    setTypeInput(() => {
-      return typeInput === 'password' ? 'text' : 'password'
-    })
+  const showHidePassword = () => {
+    setInputType((prev) => (prev === 'password' ? 'text' : 'password'))
   }
 
   return (
-    <section style={{
-      width: width,
-      ...style
-    }}
-      className={clsx(styles[positionTitle], status ? styles[status] : '')}
+    <div
+      style={{ width: '100%', ...style }}
+      className={clsx(styles['input'], styles[`status-${status}`], styles[`position-${titlePosition}`], styles[`size-${size}`])}
     >
-      {title ? <span className={clsx(styles['title'])}>{title}</span> : <></>}
-      <div className={clsx(styles['input__wrapper'], styles[size], disabled && styles['disabled'])}>
-        {icon}
+      {title && <div className={clsx(styles['title'])}>{title}</div>}
+      <div className={clsx(styles['wrapper'], disabled && styles['disabled'])}>
+        {icon && icon}
         <input {...commonProps} />
-        <div onClick={handleShowNHidePassword}>{renderIconHideNShowPassword()}</div>
+        {type === 'password' && (
+          <div onClick={showHidePassword}>{inputType === 'password' ? <EyeOffIcon fontSize='20' /> : <EyeIcon fontSize='20' />}</div>
+        )}
       </div>
-      {
-        message ? <p className={clsx(styles['msg'])}>{message}</p> : <></>
-      }
-    </section>
+      {message && <p className={clsx(styles['msg'])}>{message}</p>}
+    </div>
   )
 }
