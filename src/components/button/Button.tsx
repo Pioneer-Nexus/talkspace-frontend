@@ -5,7 +5,7 @@ import styles from './styles.module.css'
 
 type ButtonType = 'primary' | 'default' | 'text' | 'link'
 type ButtonSize = 'small' | 'default' | 'large'
-type ButtonIconPosition = 'start' | 'end'
+type ButtonIconPosition = 'start' | 'end' | 'top'
 type ButtonShape = 'default' | 'circle' | 'round'
 
 interface ButtonProps extends PropsWithChildren {
@@ -18,6 +18,7 @@ interface ButtonProps extends PropsWithChildren {
   disabled?: boolean
   loading?: boolean
   block?: boolean
+  className?: string
   onClick?: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
 }
 
@@ -33,6 +34,7 @@ export const Button: FC<ButtonProps> = (props) => {
     loading,
     href,
     block,
+    className,
     onClick,
   } = props
 
@@ -46,6 +48,7 @@ export const Button: FC<ButtonProps> = (props) => {
       disabled && styles['disabled'],
       loading && styles['loading'],
       block && styles['block'],
+      className,
     ),
     onClick,
   }
