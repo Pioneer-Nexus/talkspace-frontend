@@ -3,8 +3,8 @@ declare namespace JSX {
     width?: number | string
     height?: number | string
     className?: string
-    style?: object
+    style?: CSSProperties
     fill?: string
-    fontSize?: number | string
+    fontSize?: string | number
   }
 }
