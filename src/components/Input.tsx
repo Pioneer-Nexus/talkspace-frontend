@@ -1,7 +1,7 @@
 import EyeIcon from '@/assets/images/svgs/eye.svg'
 import EyeOffIcon from '@/assets/images/svgs/eye_off.svg'
 import clsx from 'clsx'
-import { ChangeEvent, FC, useState } from 'react'
+import { ChangeEvent, CSSProperties, FC, useState } from 'react'
 import styles from './Input.module.css'
 
 type InputType = 'text' | 'number' | 'email' | 'password'
@@ -15,11 +15,12 @@ interface InputProps {
   status?: StatusInput
   value?: string
   size?: SizeInput
-  style?: object
+  style?: CSSProperties
   icon?: JSX.Element
   disabled?: boolean
   titlePosition?: TitlePosition
   title?: string
+  titleStyle?: CSSProperties
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
   onBlur?: (event: ChangeEvent<HTMLInputElement>) => void
   onFocus?: (event: ChangeEvent<HTMLInputElement>) => void
@@ -32,12 +33,13 @@ export const Input: FC<InputProps> = (props) => {
     message = '',
     placeholder = '',
     size = 'default',
-    status = 'info',
+    status,
     style,
     title = '',
     type = 'text',
     value = '',
     titlePosition = 'top',
+    titleStyle,
     onChange = () => {},
     onBlur = () => {},
     onFocus = () => {},
@@ -46,7 +48,6 @@ export const Input: FC<InputProps> = (props) => {
   const [inputType, setInputType] = useState<InputType>(type)
 
   const commonProps = {
-    className: clsx(styles['input']),
     value: value,
     type: inputType,
     placeholder: placeholder,
@@ -63,10 +64,20 @@ export const Input: FC<InputProps> = (props) => {
   return (
     <div
       style={{ width: '100%', ...style }}
-      className={clsx(styles['input'], styles[`status-${status}`], styles[`position-${titlePosition}`], styles[`size-${size}`])}
+      className={clsx(
+        styles['input'],
+        status && styles[`status-${status}`],
+        styles[`position-${titlePosition}`],
+        styles[`size-${size}`],
+        disabled && styles['disabled'],
+      )}
     >
-      {title && <div className={clsx(styles['title'])}>{title}</div>}
-      <div className={clsx(styles['wrapper'], disabled && styles['disabled'])}>
+      {title && (
+        <div style={titleStyle} className={clsx(styles['title'])}>
+          {title}
+        </div>
+      )}
+      <div className={clsx(styles['wrapper'])}>
         {icon && icon}
         <input {...commonProps} />
         {type === 'password' && (

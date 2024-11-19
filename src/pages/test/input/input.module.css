@@ -1,7 +1,11 @@
-.wrapper > div{
-    @apply flex flex-row flex-wrap gap-[16px] border-b-[1px] border-[#000] py-[16px] px-[16px];
+.wrapper {
+  @apply border-b-[1px] border-black p-3;
 }
 
 .wrapper h4 {
-    @apply mt-4 ps-[4px]
+  @apply inline-block border-b-[1px] border-black;
+}
+
+.wrapper > div {
+  @apply mt-4 flex items-end justify-start gap-4;
 }

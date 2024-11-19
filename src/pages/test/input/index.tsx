@@ -96,62 +96,65 @@ const InputTest = () => {
       <div className={`${styles['wrapper']}`}>
         <h4>Default</h4>
         <div>
-          <Input style={{ width: '20%' }} placeholder='Text' />
+          <Input placeholder='Text' />
         </div>
       </div>
       <div className={`${styles['wrapper']}`}>
         <h4>Disabled</h4>
         <div>
-          <Input style={{ width: '20%' }} disabled={true} placeholder={'Disabled'} />
+          <Input style={{ width: 200 }} disabled={true} placeholder={'Disabled'} />
         </div>
       </div>
       <div className={`${styles['wrapper']}`}>
         <h4>Icon</h4>
         <div>
-          <Input icon={<SearchIcon />} style={{ width: '400px' }} placeholder={'Text'} />
+          <Input icon={<SearchIcon fontSize={'unset'} />} style={{ width: 200 }} placeholder={'Text'} />
         </div>
       </div>
       <div className={`${styles['wrapper']}`}>
         <h4>Size</h4>
         <div>
-          <Input style={{ width: '400px' }} placeholder={'Large Size'} size='large' />
-          <Input style={{ width: '400px' }} placeholder={'Default Size'} size='default' />
-          <Input style={{ width: '400px' }} placeholder={'Small Size'} size='small' />
+          <Input style={{ width: 200 }} placeholder={'Large Size'} size='large' />
+          <Input style={{ width: 200 }} placeholder={'Default Size'} size='default' />
+          <Input style={{ width: 200 }} placeholder={'Small Size'} size='small' />
         </div>
       </div>
       <div className={`${styles['wrapper']}`}>
         <h4>Status</h4>
         <div>
-          <Input style={{ width: '400px' }} status='warning' placeholder={'Warning'} />
-          <Input style={{ width: '400px' }} status='error' placeholder={'Error'} />
+          <Input style={{ width: 200 }} status='info' placeholder={'Info'} />
+          <Input style={{ width: 200 }} status='warning' placeholder={'Warning'} />
+          <Input style={{ width: 200 }} status='error' placeholder={'Error'} />
+          <Input style={{ width: 200 }} status='success' placeholder={'Success'} />
         </div>
       </div>
       <div className={`${styles['wrapper']}`}>
         <h4>Width 100%</h4>
         <div>
-          <Input placeholder={'Width 100%'} />
+          <Input style={{ width: '100%' }} placeholder={'Width 100%'} />
         </div>
       </div>
       <div className={`${styles['wrapper']}`}>
-        <h4>Title</h4>
+        <h4>Title Position</h4>
         <div>
-          <Input title='Title top' placeholder={'Title top'} />
-          <Input title='Title left' titlePosition='left' placeholder={'Title top'} />
+          <Input style={{ width: 200 }} title='Title top' placeholder={'Title top'} />
+          <Input style={{}} title='Title left' titlePosition='left' placeholder={'Title top'} titleStyle={{ width: 'unset' }} />
         </div>
       </div>
       <div className={`${styles['wrapper']}`}>
         <h4>Type</h4>
         <div>
-          <Input title='Text' type='text' />
-          <Input title='Email' type='email' value='abc@gmail.com' />
-          <Input title='Number' type='number' value='0988486443' />
-          <Input title='Password' type='password' value='12345678' />
+          <Input style={{ width: 200 }} title='Text' type='text' />
+          <Input style={{ width: 200 }} title='Email' type='email' value='abc@gmail.com' />
+          <Input style={{ width: 200 }} title='Number' type='number' value='0988486443' />
+          <Input style={{ width: 200 }} title='Password' type='password' value='12345678' />
         </div>
       </div>
       <div className={`${styles['wrapper']}`}>
-        <h4>simulate</h4>
+        <h4>Simulate</h4>
         <div>
           <Input
+            style={{ width: 200 }}
             title='Text'
             type='text'
             placeholder='Text'
@@ -161,6 +164,7 @@ const InputTest = () => {
             }}
           />
           <Input
+            style={{ width: 200 }}
             title='Email'
             type='email'
             placeholder='Email'
@@ -170,6 +174,7 @@ const InputTest = () => {
             }}
           />
           <Input
+            style={{ width: 200 }}
             title='Phone Number'
             type='number'
             placeholder='Phone Number'
@@ -179,6 +184,7 @@ const InputTest = () => {
             onChange={handleOnChangePhoneNumber}
           />
           <Input
+            style={{ width: 200 }}
             title='Password'
             placeholder='Password'
             type='password'
