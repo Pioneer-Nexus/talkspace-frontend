@@ -4,7 +4,7 @@ import { validatePhoneNumber } from '@/utils'
 import { ChangeEvent, useState } from 'react'
 import styles from './input.module.css'
 
-type Status = 'info' | 'error' | 'warning' | 'success'
+type Status = 'info' | 'error' | 'warning' | 'success' | 'default'
 
 type TextInput = {
   value: string
@@ -13,28 +13,28 @@ type TextInput = {
   validate: boolean
 }
 
-const InputTest = () => {
+export const InputTestPage = () => {
   const [text, setText] = useState<TextInput>({
     value: '',
-    status: 'info',
+    status: 'default',
     message: '',
     validate: true,
   })
   const [email, setEmail] = useState<TextInput>({
     value: '',
-    status: 'info',
+    status: 'default',
     message: '',
     validate: true,
   })
   const [phoneNumber, setPhoneNumber] = useState<TextInput>({
     value: '',
-    status: 'info',
+    status: 'default',
     message: '',
     validate: true,
   })
   const [password, setPassword] = useState<TextInput>({
     value: '',
-    status: 'info',
+    status: 'default',
     message: '',
     validate: true,
   })
@@ -45,7 +45,7 @@ const InputTest = () => {
     if (value.length >= 8 || value.length === 0) {
       setPassword({
         ...password,
-        status: 'info',
+        status: 'default',
         message: '',
         value: value,
       })
@@ -60,7 +60,7 @@ const InputTest = () => {
   }
 
   const handleOnChangePhoneNumber = (event: ChangeEvent<HTMLInputElement>) => {
-    let status: Status = 'info'
+    let status: Status = 'default'
     let message: string = ''
 
     const value = event.target.value.replace('  ', ' ')
@@ -198,5 +198,3 @@ const InputTest = () => {
     </>
   )
 }
-
-export default InputTest

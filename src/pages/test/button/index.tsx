@@ -1,5 +1,5 @@
 import SearchIcon from '@/assets/images/svgs/search.svg'
-import { Button } from '@/components/button'
+import { Button } from '@/components'
 
 export const ButtonTestPage = () => {
   return (
