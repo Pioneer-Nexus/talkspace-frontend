@@ -1,7 +1,9 @@
 import SearchIcon from '@/assets/images/svgs/search.svg'
 import { Button } from '@/components'
+import { APP_TITLE } from '@/utils'
 
 export const ButtonTestPage = () => {
+  document.title = APP_TITLE.TEST_PAGE[2]
   return (
     <>
       <div className={'inline-flex w-full flex-wrap items-end gap-2 border-b-[1px] border-zinc-400 p-2'}>

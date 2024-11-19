@@ -1,6 +1,6 @@
 import SearchIcon from '@/assets/images/svgs/search.svg'
 import { Input } from '@/components'
-import { validatePhoneNumber } from '@/utils'
+import { APP_TITLE, validatePhoneNumber } from '@/utils'
 import { ChangeEvent, useState } from 'react'
 import styles from './input.module.css'
 
@@ -14,6 +14,8 @@ type TextInput = {
 }
 
 export const InputTestPage = () => {
+  document.title = APP_TITLE.TEST_PAGE[1]
+
   const [text, setText] = useState<TextInput>({
     value: '',
     status: 'default',
