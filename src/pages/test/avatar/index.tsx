@@ -1,7 +1,10 @@
 import LogoIcon2 from '@/assets/images/svgs/logo2.svg'
 import { Avatar } from '@/components'
+import { APP_TITLE } from '@/utils'
 
 export const AvatarTestPage = () => {
+  document.title = APP_TITLE.TEST_PAGE[3]
+
   return (
     <div className='space-y-4'>
       <div className='flex items-end space-x-2'>

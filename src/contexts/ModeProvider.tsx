@@ -13,10 +13,11 @@ export const ModeContext = createContext<ModeConfigContext | undefined>(undefine
 export const ModeProvider: FC<PropsWithChildren> = (props) => {
   const { children } = props
   const [mode, setMode] = useLocalStorage<Modes>(LOCAL_STORAGE.THEME, Modes.LIGHT)
-  console.log(mode)
+
   useKeyboardShortcut([Key.TWO], () => {
     updateMode((mode) => (mode === Modes.DARK ? Modes.LIGHT : Modes.DARK))
   })
+
   const updateMode = (mode2: Modes | ((prev: Modes) => Modes)) => {
     const modeValue = mode2 instanceof Function ? mode2(mode) : mode2
     document.documentElement.classList.toggle(Modes.DARK)
@@ -36,9 +37,7 @@ export const ModeProvider: FC<PropsWithChildren> = (props) => {
 export const useMode = () => {
   const context = useContext(ModeContext)
   if (context === undefined) {
-    throw new Error(
-      'useMode hook must be used within ModeProvider component. Ensure that your component is wrapped in <ModeProvider>',
-    )
+    throw new Error('useMode hook must be used within ModeProvider component. Ensure that your component is wrapped in <ModeProvider>')
   }
   return context
 }

@@ -1,5 +1,3 @@
-import { Input } from '../Input'
-
 export const Modal = () => {
   return (
     <div
@@ -8,10 +6,7 @@ export const Modal = () => {
       }
     >
       <div>Header</div>
-      <div>
-        <Input />
-        <Input />
-      </div>
+      <div>Body</div>
     </div>
   )
 }

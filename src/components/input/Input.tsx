@@ -5,7 +5,7 @@ import { ChangeEvent, CSSProperties, FC, useState } from 'react'
 import styles from './Input.module.css'
 
 type InputType = 'text' | 'number' | 'email' | 'password'
-type StatusInput = 'info' | 'error' | 'warning' | 'success'
+type StatusInput = 'info' | 'error' | 'warning' | 'success' | 'default'
 type SizeInput = 'default' | 'large' | 'small'
 type TitlePosition = 'top' | 'left'
 interface InputProps {

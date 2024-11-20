@@ -5,11 +5,11 @@ import './styles'
 
 function App() {
   document.title = appConfig.title
+
   return (
     <ConfigProvider>
       <BaseRoutes />
     </ConfigProvider>
   )
 }
-
 export default App
