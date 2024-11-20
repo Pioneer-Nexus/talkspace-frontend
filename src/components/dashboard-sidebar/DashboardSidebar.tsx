@@ -12,7 +12,6 @@ export const DashboardSidebar: FC = () => {
   const navigate = useNavigate()
 
   const handleLogout = () => {
-    console.log('click')
     navigate('/sign-in')
   }
 

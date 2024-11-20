@@ -1,6 +1,7 @@
 import LoadingIcon from '@/assets/images/svgs/loading.svg'
 import clsx from 'clsx'
 import { FC, MouseEvent, PropsWithChildren, ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './styles.module.css'
 
 type ButtonType = 'primary' | 'default' | 'text' | 'link'
@@ -53,13 +54,23 @@ export const Button: FC<ButtonProps> = (props) => {
     onClick,
   }
 
-  if (href) {
+  if (href && /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/.test(href)) {
     return (
       <a {...commonProps} href={href}>
         {loading && <LoadingIcon className={styles[`svg-${type}`]} />}
         {icon && icon}
         {children}
       </a>
+    )
+  }
+
+  if (href) {
+    return (
+      <Link to={href} {...commonProps}>
+        {loading && <LoadingIcon className={styles[`svg-${type}`]} />}
+        {icon && icon}
+        {children}
+      </Link>
     )
   }
 

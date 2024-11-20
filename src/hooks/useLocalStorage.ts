@@ -1,19 +1,6 @@
 import { useState } from 'react'
 
-// export const useLocalStorage = <T>(key: string, initialValue?: T) => {
-export function useLocalStorage<T>(
-  key: string,
-  initialValue?: T | ((val: T) => T),
-): [T, (newValue: T | ((prevValue: T) => T)) => void] {
-  // const [localStorage, setNewLocalStorage] = useState<T>(() => {
-  //   try {
-  //     const item = window.localStorage.getItem(key)
-  //     return item ? JSON.parse(item) : initialValue
-  //   } catch (e) {
-  //     console.error(`Error setting localStorage key "${key}":`, e)
-  //     return (initialValue as Modes) || Modes.LIGHT
-  //   }
-  // })
+export const useLocalStorage = <T>(key: string, initialValue?: T): [T, (newValue: T | ((prevValue: T) => T)) => void] => {
   const [localStorage, setNewLocalStorage] = useState<T>(() => {
     try {
       const item = window.localStorage.getItem(key)
