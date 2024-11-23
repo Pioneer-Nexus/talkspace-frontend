@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "name": "Lily Schaden",
+    "lastTime": "2020-05-07T20:19:03.000Z",
+    "message": "ok",
+    "avatarLink": null
+  },
+  {
+    "id": 2,
+    "name": "John Doe",
+    "lastTime": "2023-11-01T15:34:21.000Z",
+    "message": "Hey, how are you?",
+    "avatarLink": "https://example.com/avatar/johndoe.png"
+  },
+  {
+    "id": 3,
+    "name": "Alice Johnson",
+    "lastTime": "2023-10-25T09:12:45.000Z",
+    "message": "Let's meet tomorrow!",
+    "avatarLink": "https://example.com/avatar/alicejohnson.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Mark Spencer",
+    "lastTime": "2023-11-15T18:45:00.000Z",
+    "message": "See you soon.",
+    "avatarLink": null
+  },
+  {
+    "id": 5,
+    "name": "Sophia Green",
+    "lastTime": "2023-11-20T12:30:10.000Z",
+    "message": "Got it, thanks!",
+    "avatarLink": "https://example.com/avatar/sophiagreen.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Michael Brown",
+    "lastTime": "2023-11-18T11:05:40.000Z",
+    "message": "Can you send the file?",
+    "avatarLink": null
+  },
+  {
+    "id": 7,
+    "name": "Olivia Miller",
+    "lastTime": "2023-11-19T08:22:33.000Z",
+    "message": "Sure thing!",
+    "avatarLink": "https://example.com/avatar/oliviamiller.png"
+  },
+  {
+    "id": 8,
+    "name": "Ethan Davis",
+    "lastTime": "2023-10-30T14:09:50.000Z",
+    "message": "Noted.",
+    "avatarLink": null
+  },
+  {
+    "id": 9,
+    "name": "Emma Wilson",
+    "lastTime": "2023-11-12T19:43:21.000Z",
+    "message": "Will do.",
+    "avatarLink": "https://example.com/avatar/emmawilson.jpg"
+  },
+  {
+    "id": 10,
+    "name": "James Taylor",
+    "lastTime": "2023-10-28T10:57:00.000Z",
+    "message": "Good morning!",
+    "avatarLink": null
+  },
+  {
+    "id": 11,
+    "name": "Ava Martinez",
+    "lastTime": "2023-11-17T13:29:50.000Z",
+    "message": "Talk later!",
+    "avatarLink": "https://example.com/avatar/avamartinez.png"
+  },
+  {
+    "id": 12,
+    "name": "William Moore",
+    "lastTime": "2023-11-13T16:00:11.000Z",
+    "message": "Is it ready?",
+    "avatarLink": "https://example.com/avatar/williampoore.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Mia Thompson",
+    "lastTime": "2023-10-29T15:17:04.000Z",
+    "message": "Let me check.",
+    "avatarLink": null
+  },
+  {
+    "id": 14,
+    "name": "Lucas White",
+    "lastTime": "2023-11-14T09:55:25.000Z",
+    "message": "Alright, thanks!",
+    "avatarLink": "https://example.com/avatar/lucaswhite.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Charlotte Harris",
+    "lastTime": "2023-11-09T20:21:17.000Z",
+    "message": "Please confirm.",
+    "avatarLink": null
+  },
+  {
+    "id": 16,
+    "name": "Benjamin Clark",
+    "lastTime": "2023-11-07T12:45:09.000Z",
+    "message": "Got the update.",
+    "avatarLink": "https://example.com/avatar/benjaminclark.png"
+  },
+  {
+    "id": 17,
+    "name": "Amelia Lewis",
+    "lastTime": "2023-11-05T11:13:44.000Z",
+    "message": "I'll follow up.",
+    "avatarLink": null
+  },
+  {
+    "id": 18,
+    "name": "Henry Young",
+    "lastTime": "2023-10-31T18:32:06.000Z",
+    "message": "See you at the meeting.",
+    "avatarLink": "https://example.com/avatar/henryyoung.jpg"
+  },
+  {
+    "id": 19,
+    "name": "Ella Hall",
+    "lastTime": "2023-11-11T09:27:50.000Z",
+    "message": "Thanks for letting me know.",
+    "avatarLink": null
+  },
+  {
+    "id": 20,
+    "name": "Noah King",
+    "lastTime": "2023-11-20T17:41:30.000Z",
+    "message": "Sounds good.",
+    "avatarLink": "https://example.com/avatar/noahking.png"
+  }
+]

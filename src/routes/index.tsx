@@ -11,8 +11,13 @@ import { LoginPage } from '../pages/login/LoginPage'
 const RouteComponent = () => {
   const navigate = useNavigate()
   const testURL = useHashedURL((state) => state.testURL)
+
   useKeyboardShortcut([Key.THREE, Key.FOUR], () => {
     navigate(`/${testURL}`)
+  })
+
+  useKeyboardShortcut([Key.FIVE], () => {
+    navigate(`/`)
   })
 
   return (
@@ -26,7 +31,7 @@ const RouteComponent = () => {
         }
       >
         <Route element={<InitialPage />} index />
-        <Route element={<LoginPage />} path='/sign-in' />
+        <Route element={<LoginPage />} path='sign-in' />
 
         <Route path={testURL}>
           <Route index element={<TestPage />} />

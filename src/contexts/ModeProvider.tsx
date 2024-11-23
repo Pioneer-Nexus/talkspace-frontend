@@ -1,6 +1,5 @@
-import { useKeyboardShortcut } from '@/hooks'
 import { useLocalStorage } from '@/hooks/useLocalStorage'
-import { Key, Modes } from '@/interfaces'
+import { Modes } from '@/interfaces'
 import { LOCAL_STORAGE } from '@/utils'
 import { createContext, FC, PropsWithChildren, useContext, useEffect } from 'react'
 
@@ -14,9 +13,9 @@ export const ModeProvider: FC<PropsWithChildren> = (props) => {
   const { children } = props
   const [mode, setMode] = useLocalStorage<Modes>(LOCAL_STORAGE.THEME, Modes.LIGHT)
 
-  useKeyboardShortcut([Key.TWO], () => {
-    updateMode((mode) => (mode === Modes.DARK ? Modes.LIGHT : Modes.DARK))
-  })
+  // useKeyboardShortcut([Key.TWO], () => {
+  //   updateMode((mode) => (mode === Modes.DARK ? Modes.LIGHT : Modes.DARK))
+  // })
 
   const updateMode = (mode2: Modes | ((prev: Modes) => Modes)) => {
     const modeValue = mode2 instanceof Function ? mode2(mode) : mode2
