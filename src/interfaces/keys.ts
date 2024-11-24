@@ -1,42 +1,41 @@
-export enum Key {
-  CTRL = 'CTRL',
-  SHIFT = 'SHIFT',
-  ALT = 'ALT',
-  ESCAPE = 'ESCAPE',
-  BACKTICK = '`',
-  Q = 'Q',
-  W = 'W',
-  E = 'E',
-  R = 'R',
-  T = 'T',
-  Y = 'Y',
-  U = 'U',
-  I = 'I',
-  O = 'O',
-  P = 'P',
-  A = 'A',
-  S = 'S',
-  D = 'D',
-  F = 'F',
-  G = 'G',
-  H = 'H',
-  J = 'J',
-  K = 'K',
-  L = 'L',
-  Z = 'Z',
-  X = 'X',
-  C = 'C',
-  V = 'V',
-  B = 'B',
-  N = 'N',
-  ZERO = '0',
-  ONE = '1',
-  TWO = '2',
-  THREE = '3',
-  FOUR = '4',
-  FIVE = '5',
-  SIX = '6',
-  SEVEN = '7',
-  EIGHT = '8',
-  NINE = '9',
-}
+export type Key =
+  | 'ctrl'
+  | 'shift'
+  | 'alt'
+  | 'escape'
+  | 'backtick'
+  | 'q'
+  | 'w'
+  | 'e'
+  | 'r'
+  | 't'
+  | 'y'
+  | 'u'
+  | 'i'
+  | 'o'
+  | 'p'
+  | 'a'
+  | 's'
+  | 'd'
+  | 'f'
+  | 'g'
+  | 'h'
+  | 'j'
+  | 'k'
+  | 'l'
+  | 'z'
+  | 'x'
+  | 'c'
+  | 'v'
+  | 'b'
+  | 'n'
+  | 0
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
