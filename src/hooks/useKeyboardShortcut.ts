@@ -1,30 +1,21 @@
 import { Key } from '@/interfaces/keys'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
-export const useKeyboardShortcut = (keys: Key[], callback: (event: KeyboardEvent) => void) => {
-  const [keysPressed, setKeysPressed] = useState<Set<string>>(new Set())
+export const useKeyboardShortcut = (keys: Key[], callback: () => void) => {
+  const pressedKeys = useRef<Set<Key>>(new Set())
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      const key = event.key.toLowerCase()
-      setKeysPressed((prevKeys) => new Set(prevKeys).add(key))
+      const key = event.key.toUpperCase()
+      pressedKeys.current.add(key as Key)
     }
 
     const handleKeyUp = (event: KeyboardEvent) => {
-      const key = event.key.toLowerCase()
+      const allKeysPressed = keys.every((key) => pressedKeys.current.has(key))
+      if (allKeysPressed) callback()
 
-      // Check if the keys match the required combination
-      const allKeysMatched = keys.every((requiredKey) => keysPressed.has((requiredKey as unknown as string).toLowerCase()))
-
-      // Revoke callback
-      if (allKeysMatched) callback(event)
-
-      // Update state to remove the released key
-      setKeysPressed((prevKeys) => {
-        const updatedKeys = new Set(prevKeys)
-        updatedKeys.delete(key)
-        return updatedKeys
-      })
+      const key = event.key.toUpperCase()
+      pressedKeys.current.delete(key as Key)
     }
 
     window.addEventListener('keydown', handleKeyDown)
@@ -34,5 +25,7 @@ export const useKeyboardShortcut = (keys: Key[], callback: (event: KeyboardEvent
       window.removeEventListener('keydown', handleKeyDown)
       window.removeEventListener('keyup', handleKeyUp)
     }
-  }, [keys, callback, keysPressed])
+  }, [keys, callback, pressedKeys])
+
+  return pressedKeys
 }
