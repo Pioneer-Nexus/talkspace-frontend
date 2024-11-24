@@ -7,6 +7,7 @@ import { InitialLayout } from '../layouts/InitialLayout'
 import { NotFound } from '../pages'
 import { InitialPage } from '../pages/InitialPage'
 import { LoginPage } from '../pages/login/LoginPage'
+import Profile from '@/pages/profile/Profile'
 
 const RouteComponent = () => {
   const navigate = useNavigate()
@@ -27,7 +28,7 @@ const RouteComponent = () => {
       >
         <Route element={<InitialPage />} index />
         <Route element={<LoginPage />} path='/sign-in' />
-
+        <Route element={<Profile />} path='/profile'/>
         <Route path={testURL}>
           <Route index element={<TestPage />} />
           <Route path='button' element={<ButtonTestPage />} />

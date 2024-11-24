@@ -1,0 +1,64 @@
+.profile-page {
+    @apply flex max-w-[1280px] mx-auto px-[70px] gap-x-3 py-[40px] bg-[#fff] ;
+}
+
+.navigation {
+    @apply flex flex-col w-1/5 pt-[38px];
+}
+
+.link {
+    @apply h-[40px] text-right px-4 leading-10 rounded text-[14px] text-[#979797] transition-all ease-linear;
+}
+
+.link:hover{
+    @apply bg-[#e4e4e4] text-[#3594ca];
+}
+
+.user-info {
+    @apply w-full flex flex-col gap-y-3
+}
+
+.card {
+    @apply border border-[#bbbbbb96] rounded w-full flex p-4;
+}
+
+.title-info {
+    @apply font-semibold text-[16px]
+}
+
+.card-content {
+    @apply grow-[1]
+}
+
+.user-name {
+    @apply text-[14px] text-[#000]
+}
+
+.user-place,
+.job-position {
+    @apply text-[14px] text-[#979797]
+}
+
+.edit-btn {
+    @apply h-fit;
+}
+
+.info {
+    @apply mt-[12px] grid grid-cols-[repeat(2,_minmax(300px,300px))]  gap-y-2.5
+}
+
+.item-info {
+    @apply flex flex-col
+}
+
+.item-title {
+    @apply text-[14px] text-[#979797]
+}
+
+.item-content {
+    @apply text-[14px] text-[#979797]
+}
+
+.avatar {
+    @apply h-[60px] w-[40px] ms-[12px] self-center
+}
