@@ -71,7 +71,7 @@ export const Input: FC<InputProps> = (props) => {
       className={clsx(
         styles['input'],
         status && styles[`status-${status}`],
-        styles[`position-${titlePosition}`],
+        title && styles[`position-${titlePosition}`],
         styles[`size-${size}`],
         disabled && styles['disabled'],
         readonly && styles['readonly']

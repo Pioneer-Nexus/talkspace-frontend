@@ -11,6 +11,7 @@
 }
 .input.position-top .wrapper {
   @apply mt-1;
+  @apply bg-red-700;
 }
 .input.position-left .wrapper {
   @apply ml-3;
