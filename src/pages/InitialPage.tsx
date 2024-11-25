@@ -1,4 +1,5 @@
 import { ChatPenal, DashboardSidebar } from '@/components'
+import { ChatView } from '@/components/chat-view'
 import { HELLO } from '@/graphql/queries'
 import { useQuery } from '@apollo/client'
 import { FC } from 'react'
@@ -11,6 +12,7 @@ export const InitialPage: FC = () => {
     <div className='flex'>
       <DashboardSidebar />
       <ChatPenal />
+      <ChatView />
     </div>
   )
 }

@@ -25,6 +25,7 @@ interface InputProps {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
   onBlur?: (event: ChangeEvent<HTMLInputElement>) => void
   onFocus?: (event: ChangeEvent<HTMLInputElement>) => void
+  extra?: JSX.Element
 }
 
 export const Input: FC<InputProps> = (props) => {
@@ -45,6 +46,7 @@ export const Input: FC<InputProps> = (props) => {
     onChange = () => {},
     onBlur = () => {},
     onFocus = () => {},
+    extra,
   } = props
 
   const [inputType, setInputType] = useState<InputType>(type)
@@ -86,6 +88,7 @@ export const Input: FC<InputProps> = (props) => {
         {type === 'password' && (
           <div onClick={showHidePassword}>{inputType === 'password' ? <EyeOffIcon fontSize='20' /> : <EyeIcon fontSize='20' />}</div>
         )}
+        {extra && extra}
       </div>
       {message && <p className={clsx(styles['msg'])}>{message}</p>}
     </div>

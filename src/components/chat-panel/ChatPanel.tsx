@@ -6,7 +6,7 @@ export const ChatPenal = () => {
     <div className='scrollbar-thin h-screen w-[300px] overflow-auto bg-stone-200'>
       {chattedUsers.map((item) => (
         <div className='flex p-2' key={item.id}>
-          <Avatar size={50} shape='square'>
+          <Avatar size={40} shape='square'>
             {item.name.charAt(0)}
           </Avatar>
           <div className='flex flex-grow flex-col justify-between pl-4'>

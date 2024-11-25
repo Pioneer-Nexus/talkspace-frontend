@@ -1,6 +1,6 @@
 import moment from 'moment'
 
-const getRemainingTime = (time: moment.MomentInput) => {
+export const getRemainingTime = (time: moment.MomentInput) => {
   const now = moment()
   const targetTime = moment(time)
   const diffInMinutes = now.diff(targetTime, 'minutes')
@@ -16,7 +16,7 @@ const getRemainingTime = (time: moment.MomentInput) => {
   }
 }
 
-const randomizeTime = (start: string, end: string): string => {
+export const randomizeTime = (start: string, end: string): string => {
   const parseTime = (timeStr: string): number => {
     const unit = timeStr.slice(-1) // Get the last character (m, h, or d)
     const value = parseInt(timeStr.slice(0, -1)) // Get the numeric value
@@ -42,5 +42,9 @@ const randomizeTime = (start: string, end: string): string => {
   const randomizedTime = new Date(originalTime - randomMinutes * 60000)
   return randomizedTime.toISOString()
 }
-
-export { getRemainingTime, randomizeTime }
+export const validatePhoneNumber = (phoneNumber: string) => {
+  const pattern = /^\d{10,11}$/
+  const isPhone = pattern.test(phoneNumber)
+  if (isPhone) return true
+  return false
+}
