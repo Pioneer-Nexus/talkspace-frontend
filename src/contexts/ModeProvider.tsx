@@ -1,3 +1,4 @@
+import { useKeyboardShortcut } from '@/hooks'
 import { useLocalStorage } from '@/hooks/useLocalStorage'
 import { Modes } from '@/interfaces'
 import { LOCAL_STORAGE } from '@/utils'
@@ -13,9 +14,9 @@ export const ModeProvider: FC<PropsWithChildren> = (props) => {
   const { children } = props
   const [mode, setMode] = useLocalStorage<Modes>(LOCAL_STORAGE.THEME, Modes.LIGHT)
 
-  // useKeyboardShortcut([Key.TWO], () => {
-  //   updateMode((mode) => (mode === Modes.DARK ? Modes.LIGHT : Modes.DARK))
-  // })
+  useKeyboardShortcut([2], () => {
+    updateMode((mode) => (mode === Modes.DARK ? Modes.LIGHT : Modes.DARK))
+  })
 
   const updateMode = (mode2: Modes | ((prev: Modes) => Modes)) => {
     const modeValue = mode2 instanceof Function ? mode2(mode) : mode2
@@ -24,7 +25,6 @@ export const ModeProvider: FC<PropsWithChildren> = (props) => {
     // const modeValue = mode2 instanceof Function ? mode2(mode) : mode2
     // const root = window.document.documentElement
     // const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    // console.log(modeValue)
     // if (modeValue === Modes.DARK || (!modeValue && systemPrefersDark)) root.classList.remove(Modes.DARK)
     // else root.classList.add(Modes.DARK)
   }

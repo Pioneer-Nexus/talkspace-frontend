@@ -17,7 +17,6 @@ export const useKeyboardShortcut = (keys: Key[], callback: () => void) => {
 
       const key = event.key
       const typedKey = /\d/.test(key) ? Number(key) : key
-      console.log(typedKey)
       pressedKeys.current.delete(typedKey as Key)
     }
 
