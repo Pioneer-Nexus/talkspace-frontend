@@ -1,77 +1,7 @@
 [
   {
-    "id": "1",
-    "timestamp": "2024-11-26T14:30:00Z",
-    "sender": "user",
-    "message": "Hello, how are you?",
-    "metadata": {
-      "read": true,
-      "type": "text"
-    }
-  },
-  {
-    "id": "2",
-    "timestamp": "2024-11-26T14:31:00Z",
-    "sender": "bot",
-    "message": "I'm good, thank you! How can I assist you today?",
-    "metadata": {
-      "read": true,
-      "type": "text"
-    }
-  },
-  {
-    "id": "3",
-    "timestamp": "2024-11-26T14:32:00Z",
-    "sender": "user",
-    "message": "Can you help me with a task?",
-    "metadata": {
-      "read": false,
-      "type": "text"
-    }
-  },
-  {
-    "id": "4",
-    "timestamp": "2024-11-26T14:33:00Z",
-    "sender": "bot",
-    "message": "Of course! What do you need help with?",
-    "metadata": {
-      "read": true,
-      "type": "text"
-    }
-  },
-  {
-    "id": "5",
-    "timestamp": "2024-11-26T14:34:00Z",
-    "sender": "user",
-    "message": "I need a data structure example.",
-    "metadata": {
-      "read": false,
-      "type": "text"
-    }
-  },
-  {
-    "id": "6",
-    "timestamp": "2024-11-26T14:35:00Z",
-    "sender": "bot",
-    "message": "Sure, let me provide one.",
-    "metadata": {
-      "read": true,
-      "type": "text"
-    }
-  },
-  {
-    "id": "7",
-    "timestamp": "2024-11-26T14:36:00Z",
-    "sender": "user",
-    "message": "Thank you!",
-    "metadata": {
-      "read": true,
-      "type": "text"
-    }
-  },
-  {
     "id": "8",
-    "timestamp": "2024-11-26T14:37:00Z",
+    "timestamp": "2024-11-26T06:00:41.234Z",
     "sender": "bot",
     "message": "You're welcome!",
     "metadata": {
@@ -80,8 +10,78 @@
     }
   },
   {
+    "id": "17",
+    "timestamp": "2024-11-26T06:00:41.234Z",
+    "sender": "user",
+    "message": "Thanks for the example!",
+    "metadata": {
+      "read": true,
+      "type": "text"
+    }
+  },
+  {
+    "id": "20",
+    "timestamp": "2024-11-26T06:00:41.234Z",
+    "sender": "bot",
+    "message": "React, Angular, and Vue are some top choices.",
+    "metadata": {
+      "read": true,
+      "type": "text"
+    }
+  },
+  {
+    "id": "23",
+    "timestamp": "2024-11-26T06:00:41.234Z",
+    "sender": "user",
+    "message": "Yes, it's my favorite!",
+    "metadata": {
+      "read": true,
+      "type": "text"
+    }
+  },
+  {
+    "id": "26",
+    "timestamp": "2024-11-26T06:00:41.234Z",
+    "sender": "bot",
+    "message": "You're welcome. Have a great day!",
+    "metadata": {
+      "read": true,
+      "type": "text"
+    }
+  },
+  {
+    "id": "2",
+    "timestamp": "2024-11-26T06:01:41.234Z",
+    "sender": "bot",
+    "message": "I'm good, thank you! How can I assist you today?",
+    "metadata": {
+      "read": true,
+      "type": "text"
+    }
+  },
+  {
+    "id": "7",
+    "timestamp": "2024-11-26T06:01:41.234Z",
+    "sender": "user",
+    "message": "Thank you!",
+    "metadata": {
+      "read": true,
+      "type": "text"
+    }
+  },
+  {
+    "id": "24",
+    "timestamp": "2024-11-26T06:01:41.234Z",
+    "sender": "bot",
+    "message": "That's great to hear!",
+    "metadata": {
+      "read": true,
+      "type": "text"
+    }
+  },
+  {
     "id": "9",
-    "timestamp": "2024-11-26T14:38:00Z",
+    "timestamp": "2024-11-26T06:02:41.234Z",
     "sender": "user",
     "message": "How can I optimize my code?",
     "metadata": {
@@ -91,7 +91,7 @@
   },
   {
     "id": "10",
-    "timestamp": "2024-11-26T14:39:00Z",
+    "timestamp": "2024-11-26T06:02:41.234Z",
     "sender": "bot",
     "message": "Start by analyzing its complexity and using best practices.",
     "metadata": {
@@ -100,18 +100,8 @@
     }
   },
   {
-    "id": "11",
-    "timestamp": "2024-11-26T14:40:00Z",
-    "sender": "user",
-    "message": "Any tips for frontend development?",
-    "metadata": {
-      "read": false,
-      "type": "text"
-    }
-  },
-  {
     "id": "12",
-    "timestamp": "2024-11-26T14:41:00Z",
+    "timestamp": "2024-11-26T06:02:41.234Z",
     "sender": "bot",
     "message": "Focus on clean design, accessibility, and performance.",
     "metadata": {
@@ -120,8 +110,108 @@
     }
   },
   {
+    "id": "21",
+    "timestamp": "2024-11-26T06:02:41.234Z",
+    "sender": "user",
+    "message": "I like React!",
+    "metadata": {
+      "read": true,
+      "type": "text"
+    }
+  },
+  {
+    "id": "25",
+    "timestamp": "2024-11-26T06:02:41.234Z",
+    "sender": "user",
+    "message": "Thanks for the chat.",
+    "metadata": {
+      "read": true,
+      "type": "text"
+    }
+  },
+  {
+    "id": "5",
+    "timestamp": "2024-11-26T06:03:41.234Z",
+    "sender": "user",
+    "message": "I need a data structure example.",
+    "metadata": {
+      "read": false,
+      "type": "text"
+    }
+  },
+  {
+    "id": "6",
+    "timestamp": "2024-11-26T06:03:41.234Z",
+    "sender": "bot",
+    "message": "Sure, let me provide one.",
+    "metadata": {
+      "read": true,
+      "type": "text"
+    }
+  },
+  {
+    "id": "11",
+    "timestamp": "2024-11-26T06:03:41.234Z",
+    "sender": "user",
+    "message": "Any tips for frontend development?",
+    "metadata": {
+      "read": false,
+      "type": "text"
+    }
+  },
+  {
+    "id": "15",
+    "timestamp": "2024-11-26T06:03:41.234Z",
+    "sender": "user",
+    "message": "Can you show me a sample API response?",
+    "metadata": {
+      "read": true,
+      "type": "text"
+    }
+  },
+  {
+    "id": "22",
+    "timestamp": "2024-11-26T06:03:41.234Z",
+    "sender": "bot",
+    "message": "React is powerful for building UI components.",
+    "metadata": {
+      "read": true,
+      "type": "text"
+    }
+  },
+  {
+    "id": "27",
+    "timestamp": "2024-11-26T06:03:41.234Z",
+    "sender": "user",
+    "message": "Bye!",
+    "metadata": {
+      "read": false,
+      "type": "text"
+    }
+  },
+  {
+    "id": "29",
+    "timestamp": "2024-11-26T06:03:41.234Z",
+    "sender": "user",
+    "message": "See you later!",
+    "metadata": {
+      "read": false,
+      "type": "text"
+    }
+  },
+  {
+    "id": "1",
+    "timestamp": "2024-11-26T06:04:41.234Z",
+    "sender": "user",
+    "message": "Hello, how are you?",
+    "metadata": {
+      "read": true,
+      "type": "text"
+    }
+  },
+  {
     "id": "13",
-    "timestamp": "2024-11-26T14:42:00Z",
+    "timestamp": "2024-11-26T06:04:41.234Z",
     "sender": "user",
     "message": "Got it. Thank you!",
     "metadata": {
@@ -131,7 +221,7 @@
   },
   {
     "id": "14",
-    "timestamp": "2024-11-26T14:43:00Z",
+    "timestamp": "2024-11-26T06:04:41.234Z",
     "sender": "bot",
     "message": "Happy to help!",
     "metadata": {
@@ -140,38 +230,8 @@
     }
   },
   {
-    "id": "15",
-    "timestamp": "2024-11-26T14:44:00Z",
-    "sender": "user",
-    "message": "Can you show me a sample API response?",
-    "metadata": {
-      "read": true,
-      "type": "text"
-    }
-  },
-  {
-    "id": "16",
-    "timestamp": "2024-11-26T14:45:00Z",
-    "sender": "bot",
-    "message": "Hello, how are you?",
-    "metadata": {
-      "read": false,
-      "type": "code"
-    }
-  },
-  {
-    "id": "17",
-    "timestamp": "2024-11-26T14:46:00Z",
-    "sender": "user",
-    "message": "Thanks for the example!",
-    "metadata": {
-      "read": true,
-      "type": "text"
-    }
-  },
-  {
     "id": "18",
-    "timestamp": "2024-11-26T14:47:00Z",
+    "timestamp": "2024-11-26T06:04:41.234Z",
     "sender": "bot",
     "message": "No problem.",
     "metadata": {
@@ -180,8 +240,38 @@
     }
   },
   {
+    "id": "3",
+    "timestamp": "2024-11-26T06:05:41.234Z",
+    "sender": "user",
+    "message": "Can you help me with a task?",
+    "metadata": {
+      "read": false,
+      "type": "text"
+    }
+  },
+  {
+    "id": "4",
+    "timestamp": "2024-11-26T06:05:41.234Z",
+    "sender": "bot",
+    "message": "Of course! What do you need help with?",
+    "metadata": {
+      "read": true,
+      "type": "text"
+    }
+  },
+  {
+    "id": "16",
+    "timestamp": "2024-11-26T06:05:41.234Z",
+    "sender": "bot",
+    "message": "Hello, how are you?",
+    "metadata": {
+      "read": false,
+      "type": "code"
+    }
+  },
+  {
     "id": "19",
-    "timestamp": "2024-11-26T14:48:00Z",
+    "timestamp": "2024-11-26T06:05:41.234Z",
     "sender": "user",
     "message": "What are some popular frameworks?",
     "metadata": {
@@ -190,102 +280,12 @@
     }
   },
   {
-    "id": "20",
-    "timestamp": "2024-11-26T14:49:00Z",
-    "sender": "bot",
-    "message": "React, Angular, and Vue are some top choices.",
-    "metadata": {
-      "read": true,
-      "type": "text"
-    }
-  },
-  {
-    "id": "21",
-    "timestamp": "2024-11-26T14:50:00Z",
-    "sender": "user",
-    "message": "I like React!",
-    "metadata": {
-      "read": true,
-      "type": "text"
-    }
-  },
-  {
-    "id": "22",
-    "timestamp": "2024-11-26T14:51:00Z",
-    "sender": "bot",
-    "message": "React is powerful for building UI components.",
-    "metadata": {
-      "read": true,
-      "type": "text"
-    }
-  },
-  {
-    "id": "23",
-    "timestamp": "2024-11-26T14:52:00Z",
-    "sender": "user",
-    "message": "Yes, it's my favorite!",
-    "metadata": {
-      "read": true,
-      "type": "text"
-    }
-  },
-  {
-    "id": "24",
-    "timestamp": "2024-11-26T14:53:00Z",
-    "sender": "bot",
-    "message": "That's great to hear!",
-    "metadata": {
-      "read": true,
-      "type": "text"
-    }
-  },
-  {
-    "id": "25",
-    "timestamp": "2024-11-26T14:54:00Z",
-    "sender": "user",
-    "message": "Thanks for the chat.",
-    "metadata": {
-      "read": true,
-      "type": "text"
-    }
-  },
-  {
-    "id": "26",
-    "timestamp": "2024-11-26T14:55:00Z",
-    "sender": "bot",
-    "message": "You're welcome. Have a great day!",
-    "metadata": {
-      "read": true,
-      "type": "text"
-    }
-  },
-  {
-    "id": "27",
-    "timestamp": "2024-11-26T14:56:00Z",
-    "sender": "user",
-    "message": "Bye!",
-    "metadata": {
-      "read": false,
-      "type": "text"
-    }
-  },
-  {
     "id": "28",
-    "timestamp": "2024-11-26T14:57:00Z",
+    "timestamp": "2024-11-26T06:05:41.234Z",
     "sender": "bot",
     "message": "Goodbye!",
     "metadata": {
       "read": true,
-      "type": "text"
-    }
-  },
-  {
-    "id": "29",
-    "timestamp": "2024-11-26T14:58:00Z",
-    "sender": "user",
-    "message": "See you later!",
-    "metadata": {
-      "read": false,
       "type": "text"
     }
   }

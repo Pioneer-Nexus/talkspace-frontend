@@ -9,7 +9,7 @@ type ButtonSize = 'small' | 'default' | 'large'
 type ButtonIconPosition = 'start' | 'end' | 'top'
 type ButtonShape = 'default' | 'circle' | 'round'
 
-interface ButtonProps extends PropsWithChildren {
+interface Props extends PropsWithChildren {
   type?: ButtonType
   size?: ButtonSize
   shape?: ButtonShape
@@ -23,7 +23,7 @@ interface ButtonProps extends PropsWithChildren {
   onClick?: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
 }
 
-export const Button: FC<ButtonProps> = (props) => {
+export const Button: FC<Props> = (props) => {
   const {
     children,
     shape = 'default',

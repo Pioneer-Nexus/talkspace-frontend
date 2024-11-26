@@ -8,7 +8,7 @@ type InputType = 'text' | 'number' | 'email' | 'password'
 export type StatusInput = 'info' | 'error' | 'warning' | 'success' | 'default'
 type SizeInput = 'default' | 'large' | 'small'
 type TitlePosition = 'top' | 'left'
-interface InputProps {
+interface Props {
   type?: InputType
   placeholder?: string
   message?: string
@@ -28,7 +28,7 @@ interface InputProps {
   extra?: JSX.Element
 }
 
-export const Input: FC<InputProps> = (props) => {
+export const Input: FC<Props> = (props) => {
   const {
     disabled = false,
     icon,

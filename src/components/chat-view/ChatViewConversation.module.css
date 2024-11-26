@@ -1,4 +1,0 @@
-.wrapper {
-  @apply scrollbar-thin overflow-auto p-2;
-  height: calc(100vh - 75px - 56px);
-}
