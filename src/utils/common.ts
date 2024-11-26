@@ -1,6 +1,6 @@
-import moment from 'moment'
+import moment, { MomentInput } from 'moment'
 
-export const getRemainingTime = (time: moment.MomentInput) => {
+export const formatRemainingTime = (time: MomentInput) => {
   const now = moment()
   const targetTime = moment(time)
   const diffInMinutes = now.diff(targetTime, 'minutes')
@@ -18,10 +18,12 @@ export const getRemainingTime = (time: moment.MomentInput) => {
 
 export const randomizeTime = (start: string, end: string): string => {
   const parseTime = (timeStr: string): number => {
-    const unit = timeStr.slice(-1) // Get the last character (m, h, or d)
+    const unit = timeStr.slice(-1) // Get the last character (s, m, h, or d)
     const value = parseInt(timeStr.slice(0, -1)) // Get the numeric value
     let minutes = 0
-    if (unit === 'm') {
+    if (unit === 's') {
+      minutes = value / 60 // Convert seconds to minutes
+    } else if (unit === 'm') {
       minutes = value // If it's minutes
     } else if (unit === 'h') {
       minutes = value * 60 // Convert hours to minutes
@@ -42,6 +44,23 @@ export const randomizeTime = (start: string, end: string): string => {
   const randomizedTime = new Date(originalTime - randomMinutes * 60000)
   return randomizedTime.toISOString()
 }
+
+export const formatMessageTime = (dateInput: MomentInput) => {
+  const now = moment()
+  const date = moment(dateInput)
+
+  const secondsDiff = now.diff(date, 'seconds')
+  const minutesDiff = now.diff(date, 'minutes')
+  const daysDiff = now.diff(date, 'days')
+
+  if (secondsDiff < 60) return 'Just now'
+  if (minutesDiff < 60) return date.format('h:mm a') // e.g., "3:45 PM"
+  if (daysDiff === 1) return 'Yesterday'
+  if (daysDiff < 7) return date.format('dddd') // e.g., "Tuesday"
+  if (now.year() === date.year()) return date.format('MMM D') // e.g., "Sep 12"
+  return date.format('MMM D, YYYY') // e.g., "Dec 25, 2022"
+}
+
 export const validatePhoneNumber = (phoneNumber: string) => {
   const pattern = /^\d{10,11}$/
   const isPhone = pattern.test(phoneNumber)

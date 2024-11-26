@@ -16,7 +16,7 @@ export const DashboardSidebar: FC = () => {
   }
 
   return (
-    <div className='flex h-screen w-20 flex-col items-center justify-between bg-gray-400 p-2'>
+    <div className='flex h-screen w-[68px] flex-col items-center justify-between bg-gray-400 p-2'>
       <div className='items-middle flex flex-col items-center gap-4'>
         <Avatar size={40} src={<LogoIcon2 fill='#1560BD' />} />
 
