@@ -1,17 +1,9 @@
 import messagesData from '@/mock-data/messages.json'
+import { Message } from '@/stores/chatConversation'
 import { randomizeTime } from '@/utils'
 import { FC, useState } from 'react'
 import { ChatViewMessage } from './ChatViewMessage'
-interface Message {
-  id: string
-  timestamp: string // or Date if you want to parse it as a Date object
-  sender: string
-  message: string
-  metadata: {
-    read: boolean
-    type: string // e.g., "text", "image", etc., you can use a union type if there are predefined values
-  }
-}
+
 export const ChatViewConversation: FC = () => {
   const [message, setMessage] = useState<Message[]>(messagesData)
 
