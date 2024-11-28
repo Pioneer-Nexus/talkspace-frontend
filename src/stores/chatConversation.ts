@@ -1,5 +1,5 @@
+import messageData from '@/mock-data/messages.json'
 import { create } from 'zustand'
-
 export interface Message {
   id: string
   timestamp: string // or Date if you want to parse it as a Date object
@@ -17,10 +17,13 @@ type State = {
 }
 
 type Action = {
-  updateChatConversation: (messages: State['messages']) => void
+  updateChatConversation: (messages: string) => void
 }
 
 export const useChatConversation = create<State & Action>((set) => ({
   messages: [],
-  updateChatConversation: (messages) => set(() => ({ messages: messages })),
+  updateChatConversation: (room_id: string) => {
+    const data = messageData.filter((item: Message) => item.room_id === room_id)
+    set(() => ({ messages: data }))
+  },
 }))

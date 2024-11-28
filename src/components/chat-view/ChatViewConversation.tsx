@@ -1,15 +1,13 @@
-import messagesData from '@/mock-data/messages.json'
-import { Message } from '@/stores/chatConversation'
-import { randomizeTime } from '@/utils'
-import { FC, useState } from 'react'
+import { useChatConversation } from '@/stores/chatConversation'
+import { FC } from 'react'
 import { ChatViewMessage } from './ChatViewMessage'
 
 export const ChatViewConversation: FC = () => {
-  const [message, setMessage] = useState<Message[]>(messagesData)
+  const message = useChatConversation((state) => state.messages)
 
   const x = message
-    .map((item) => ({ ...item, timestamp: randomizeTime('0s', '5m') }))
-    .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
+  // .map((item) => ({ ...item, timestamp: randomizeTime('0s', '5m') }))
+  // .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
   // .filter((item, i) => i < 4)
   return (
     <div className='scrollbar-thin flex h-[calc(100vh-75px-56px)] flex-col-reverse overflow-auto p-2'>
