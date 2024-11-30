@@ -5,25 +5,40 @@ export interface Message {
   timestamp: string // or Date if you want to parse it as a Date object
   sender: string
   message: string
-  room_id: string
+  roomId: string
   metadata: {
     read: boolean
     type: string // e.g., "text", "image", etc., you can use a union type if there are predefined values
   }
 }
 
+interface Participant {
+  user_id: string
+  name: string
+  avatarLink?: string
+}
+
 type State = {
+  roomId: string
+  participants: Participant[]
   messages: Message[]
 }
 
 type Action = {
-  updateChatConversation: (messages: string) => void
+  updateChatConversations: (roomId: string) => void
+  updateChatConversation: (message: Message) => void
 }
 
 export const useChatConversation = create<State & Action>((set) => ({
+  roomId: '',
   messages: [],
-  updateChatConversation: (room_id: string) => {
-    const data = messageData.filter((item: Message) => item.room_id === room_id)
-    set(() => ({ messages: data }))
+  participants: [],
+  updateChatConversations: (roomId: string) => {
+    const data = messageData.filter((item: Message) => item.roomId === roomId)
+    set((state) => ({ ...state, messages: data, roomId }))
+  },
+  updateChatConversation: (message: Message) => {
+    console.log(message)
+    set((state) => ({ ...state, messages: [message, ...state.messages] }))
   },
 }))

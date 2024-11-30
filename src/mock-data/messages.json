@@ -4,7 +4,7 @@
     "timestamp": "2024-11-26T06:00:41.234Z",
     "sender": "bot",
     "message": "You're welcome!",
-    "room_id": "1",
+    "roomId": "1",
     "metadata": {
       "read": true,
       "type": "text"
@@ -15,7 +15,7 @@
     "timestamp": "2024-11-26T06:00:41.234Z",
     "sender": "user",
     "message": "Thanks for the example!",
-    "room_id": "1",
+    "roomId": "1",
     "metadata": {
       "read": true,
       "type": "text"
@@ -26,7 +26,7 @@
     "timestamp": "2024-11-26T06:00:41.234Z",
     "sender": "bot",
     "message": "React, Angular, and Vue are some top choices.",
-    "room_id": "1",
+    "roomId": "1",
     "metadata": {
       "read": true,
       "type": "text"
@@ -37,7 +37,7 @@
     "timestamp": "2024-11-26T06:00:41.234Z",
     "sender": "user",
     "message": "Yes, it's my favorite!",
-    "room_id": "1",
+    "roomId": "1",
     "metadata": {
       "read": true,
       "type": "text"
@@ -48,7 +48,7 @@
     "timestamp": "2024-11-26T06:00:41.234Z",
     "sender": "bot",
     "message": "You're welcome. Have a great day!",
-    "room_id": "2",
+    "roomId": "2",
     "metadata": {
       "read": true,
       "type": "text"
@@ -59,7 +59,7 @@
     "timestamp": "2024-11-26T06:01:41.234Z",
     "sender": "bot",
     "message": "I'm good, thank you! How can I assist you today?",
-    "room_id": "2",
+    "roomId": "2",
     "metadata": {
       "read": true,
       "type": "text"
@@ -70,7 +70,7 @@
     "timestamp": "2024-11-26T06:01:41.234Z",
     "sender": "user",
     "message": "Thank you!",
-    "room_id": "2",
+    "roomId": "2",
     "metadata": {
       "read": true,
       "type": "text"
@@ -81,7 +81,7 @@
     "timestamp": "2024-11-26T06:01:41.234Z",
     "sender": "bot",
     "message": "That's great to hear!",
-    "room_id": "2",
+    "roomId": "2",
     "metadata": {
       "read": true,
       "type": "text"
@@ -92,7 +92,7 @@
     "timestamp": "2024-11-26T06:02:41.234Z",
     "sender": "user",
     "message": "How can I optimize my code?",
-    "room_id": "3",
+    "roomId": "3",
     "metadata": {
       "read": true,
       "type": "text"
@@ -103,7 +103,7 @@
     "timestamp": "2024-11-26T06:02:41.234Z",
     "sender": "bot",
     "message": "Start by analyzing its complexity and using best practices.",
-    "room_id": "3",
+    "roomId": "3",
     "metadata": {
       "read": false,
       "type": "text"
@@ -114,7 +114,7 @@
     "timestamp": "2024-11-26T06:02:41.234Z",
     "sender": "bot",
     "message": "Focus on clean design, accessibility, and performance.",
-    "room_id": "3",
+    "roomId": "3",
     "metadata": {
       "read": true,
       "type": "text"
@@ -125,7 +125,7 @@
     "timestamp": "2024-11-26T06:02:41.234Z",
     "sender": "user",
     "message": "I like React!",
-    "room_id": "3",
+    "roomId": "3",
     "metadata": {
       "read": true,
       "type": "text"
@@ -136,7 +136,7 @@
     "timestamp": "2024-11-26T06:02:41.234Z",
     "sender": "user",
     "message": "Thanks for the chat.",
-    "room_id": "3",
+    "roomId": "3",
     "metadata": {
       "read": true,
       "type": "text"
@@ -147,7 +147,7 @@
     "timestamp": "2024-11-26T06:03:41.234Z",
     "sender": "user",
     "message": "I need a data structure example.",
-    "room_id": "1",
+    "roomId": "1",
     "metadata": {
       "read": false,
       "type": "text"
@@ -158,7 +158,7 @@
     "timestamp": "2024-11-26T06:03:41.234Z",
     "sender": "bot",
     "message": "Sure, let me provide one.",
-    "room_id": "1",
+    "roomId": "1",
     "metadata": {
       "read": true,
       "type": "text"
@@ -169,7 +169,7 @@
     "timestamp": "2024-11-26T06:03:41.234Z",
     "sender": "user",
     "message": "Any tips for frontend development?",
-    "room_id": "4",
+    "roomId": "4",
     "metadata": {
       "read": false,
       "type": "text"
@@ -180,7 +180,7 @@
     "timestamp": "2024-11-26T06:03:41.234Z",
     "sender": "user",
     "message": "Can you show me a sample API response?",
-    "room_id": "4",
+    "roomId": "4",
     "metadata": {
       "read": true,
       "type": "text"
@@ -191,7 +191,7 @@
     "timestamp": "2024-11-26T06:03:41.234Z",
     "sender": "bot",
     "message": "React is powerful for building UI components.",
-    "room_id": "4",
+    "roomId": "4",
     "metadata": {
       "read": true,
       "type": "text"
@@ -202,7 +202,7 @@
     "timestamp": "2024-11-26T06:03:41.234Z",
     "sender": "user",
     "message": "Bye!",
-    "room_id": "4",
+    "roomId": "4",
     "metadata": {
       "read": false,
       "type": "text"
@@ -213,7 +213,7 @@
     "timestamp": "2024-11-26T06:03:41.234Z",
     "sender": "user",
     "message": "See you later!",
-    "room_id": "4",
+    "roomId": "4",
     "metadata": {
       "read": false,
       "type": "text"
@@ -224,7 +224,7 @@
     "timestamp": "2024-11-26T06:04:41.234Z",
     "sender": "user",
     "message": "Hello, how are you?",
-    "room_id": "4",
+    "roomId": "4",
     "metadata": {
       "read": true,
       "type": "text"
@@ -235,7 +235,7 @@
     "timestamp": "2024-11-26T06:04:41.234Z",
     "sender": "user",
     "message": "Got it. Thank you!",
-    "room_id": "1",
+    "roomId": "1",
     "metadata": {
       "read": false,
       "type": "text"
@@ -246,7 +246,7 @@
     "timestamp": "2024-11-26T06:04:41.234Z",
     "sender": "bot",
     "message": "Happy to help!",
-    "room_id": "1",
+    "roomId": "1",
     "metadata": {
       "read": true,
       "type": "text"
@@ -257,7 +257,7 @@
     "timestamp": "2024-11-26T06:04:41.234Z",
     "sender": "bot",
     "message": "No problem.",
-    "room_id": "1",
+    "roomId": "1",
     "metadata": {
       "read": true,
       "type": "text"
@@ -268,7 +268,7 @@
     "timestamp": "2024-11-26T06:05:41.234Z",
     "sender": "user",
     "message": "Can you help me with a task?",
-    "room_id": "1",
+    "roomId": "1",
     "metadata": {
       "read": false,
       "type": "text"
@@ -279,7 +279,7 @@
     "timestamp": "2024-11-26T06:05:41.234Z",
     "sender": "bot",
     "message": "Of course! What do you need help with?",
-    "room_id": "5",
+    "roomId": "5",
     "metadata": {
       "read": true,
       "type": "text"
@@ -290,7 +290,7 @@
     "timestamp": "2024-11-26T06:05:41.234Z",
     "sender": "bot",
     "message": "Hello, how are you?",
-    "room_id": "5",
+    "roomId": "5",
     "metadata": {
       "read": false,
       "type": "code"
@@ -301,7 +301,7 @@
     "timestamp": "2024-11-26T06:05:41.234Z",
     "sender": "user",
     "message": "What are some popular frameworks?",
-    "room_id": "5",
+    "roomId": "5",
     "metadata": {
       "read": true,
       "type": "text"
@@ -312,7 +312,7 @@
     "timestamp": "2024-11-26T06:05:41.234Z",
     "sender": "bot",
     "message": "Goodbye!",
-    "room_id": "5",
+    "roomId": "5",
     "metadata": {
       "read": true,
       "type": "text"

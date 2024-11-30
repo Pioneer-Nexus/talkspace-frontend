@@ -3,9 +3,9 @@ import { FC } from 'react'
 import { ChatViewMessage } from './ChatViewMessage'
 
 export const ChatViewConversation: FC = () => {
-  const message = useChatConversation((state) => state.messages)
+  const { messages } = useChatConversation()
 
-  const x = message
+  const x = messages
   // .map((item) => ({ ...item, timestamp: randomizeTime('0s', '5m') }))
   // .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
   // .filter((item, i) => i < 4)

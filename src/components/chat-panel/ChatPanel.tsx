@@ -1,19 +1,26 @@
 import conversationData from '@/mock-data/conversation.json'
 import { useChatConversation } from '@/stores'
 import { formatRemainingTime } from '@/utils'
+import clsx from 'clsx'
+import { useEffect } from 'react'
 import { Avatar } from '../avatar'
+
 export const ChatPenal = () => {
-  const updateChatConversation = useChatConversation((state) => state.updateChatConversation)
+  const { updateChatConversations, roomId } = useChatConversation()
 
   const handleClickConversation = (roomId: string) => {
-    updateChatConversation(roomId)
+    updateChatConversations(roomId)
   }
+
+  useEffect(() => {
+    updateChatConversations(conversationData[0].id)
+  }, [])
 
   return (
     <div className='scrollbar-thin h-screen w-[300px] overflow-auto bg-stone-200'>
       {conversationData.map((item) => (
         <div
-          className='flex p-2 transition-colors duration-300 hover:cursor-pointer hover:bg-stone-300'
+          className={clsx('flex p-2 transition-colors duration-300 hover:cursor-pointer hover:bg-stone-400', roomId === item.id && 'bg-stone-300')}
           key={item.id}
           onClick={() => handleClickConversation(item.id)}
         >
