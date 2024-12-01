@@ -56,3 +56,11 @@
 .input.position-left .title {
   @apply whitespace-nowrap;
 }
+
+.input.readonly .wrapper{
+  @apply border-0 px-0 h-[18px] mt-[0px] text-[#ababab]
+}
+
+.input.readonly .wrapper .value-readonly{
+  @apply font-semibold
+}

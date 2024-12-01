@@ -1,0 +1,19 @@
+.card-info {
+    @apply mt-[18px] flex
+}
+
+.avatar {
+    @apply h-[40px] w-[40px]
+}
+
+.info-basic {
+    @apply flex flex-col justify-between ms-[8px]
+}
+
+.fullname {
+    @apply inline-block
+}
+
+.birthday {
+    @apply text-[#858585] text-[14px]
+}
