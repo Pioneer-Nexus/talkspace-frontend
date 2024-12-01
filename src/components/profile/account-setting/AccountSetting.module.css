@@ -1,0 +1,23 @@
+.card-info {
+    @apply mt-[18px] flex overflow-y-auto
+}
+
+.avatar {
+    @apply h-[40px] w-[40px]
+}
+
+.info-basic {
+    @apply flex flex-col justify-between ms-[8px]
+}
+
+.fullname {
+    @apply inline-block
+}
+
+.birthday {
+    @apply text-[#858585] text-[14px]
+}
+
+.save-password-btn {
+    @apply h-[40px] mt-[24px] bg-[#000] text-[#fff]
+}
