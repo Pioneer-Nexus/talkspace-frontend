@@ -79,6 +79,17 @@ export const BadgeTestPage: FC = () => {
           </Badge>
         </div>
       </div>
+      <div className={styles['wrapper']}>
+        <h4>Dot</h4>
+        <div>
+          <Badge count={7}>
+            <Avatar size={40} shape='square' />
+          </Badge>
+          <Badge dot>
+            <Avatar size={40} shape='square' />
+          </Badge>
+        </div>
+      </div>
     </>
   )
 }
