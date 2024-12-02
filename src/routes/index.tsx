@@ -1,6 +1,6 @@
 import { useKeyboardShortcut } from '@/hooks'
 import { Key } from '@/interfaces'
-import { AvatarTestPage, ButtonTestPage, InputTestPage, TestPage } from '@/pages'
+import { AvatarTestPage, BadgeTestPage, ButtonTestPage, InputTestPage, TestPage } from '@/pages'
 import { useHashedURL } from '@/stores'
 import { Outlet, Route, BrowserRouter as Router, Routes, useNavigate } from 'react-router-dom'
 import { InitialLayout } from '../layouts/InitialLayout'
@@ -38,6 +38,7 @@ const RouteComponent = () => {
           <Route path='button' element={<ButtonTestPage />} />
           <Route path='avatar' element={<AvatarTestPage />} />
           <Route path='input' element={<InputTestPage />} />
+          <Route path='badge' element={<BadgeTestPage />} />
         </Route>
 
         <Route element={<NotFound />} path='*' />
