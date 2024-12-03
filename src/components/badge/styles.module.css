@@ -1,0 +1,24 @@
+.badge {
+  @apply relative inline-flex text-sm;
+}
+
+.badge > sup {
+  @apply inline-flex items-center justify-center text-white;
+}
+.badge.size-default > sup {
+  @apply h-5 min-w-[20px] rounded-[10px] px-1 leading-[18px];
+}
+
+.badge.size-small > sup {
+  @apply h-[12px] min-w-[12px] rounded-[6px] px-1 leading-4;
+}
+.badge.size-small.under-count > sup {
+  @apply px-0;
+}
+.badge.dot > sup {
+  @apply h-[6px] w-[6px] min-w-[6px];
+}
+
+.badge.badge.size-small > sup > span {
+  line-height: 12px;
+}
