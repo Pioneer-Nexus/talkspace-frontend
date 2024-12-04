@@ -1,10 +1,13 @@
 interface AppConfig {
   title: string
-  apiUrl: string
+  restApiUrl: string
+  graphApiUrl: string
 }
+
 const config: AppConfig = {
   title: 'Chat Space',
-  apiUrl: import.meta.env.VITE_API_URL || 'http://localhost:3000',
+  restApiUrl: import.meta.env.VITE_API_URL || '',
+  graphApiUrl: import.meta.env.VITE_GRAPH_API_URL || '',
 }
 
 export const appConfig = config

@@ -1,0 +1,11 @@
+query Hello {
+  hello {
+    _id
+    authId
+    authSecret
+    createdAt
+    expiredAt
+    updatedAt
+    username
+  }
+}
