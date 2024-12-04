@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import styles from './Card.module.css';
 import { FC, PropsWithChildren } from 'react';
 
 interface CardProps extends PropsWithChildren {
@@ -9,7 +8,7 @@ interface CardProps extends PropsWithChildren {
 export const Card: FC<CardProps> = (props) => {
     const  {children, className} = props;
     return (
-        <div className={clsx(styles['card'], className)}>
+        <div className={clsx('p-[12px] rounded-lg border-[#dedede] border-[1px] w-full', className)}>
             {children}
         </div>
     );
