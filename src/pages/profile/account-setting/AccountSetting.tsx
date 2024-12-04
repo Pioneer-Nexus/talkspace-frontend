@@ -1,14 +1,13 @@
 import clsx from 'clsx'
 // import { useEffect, useState } from 'react'
 import styles from './AccountSetting.module.css'
-import { Input } from '@/components/input'
-import { Card } from '../card/Card'
+import { Input, StatusInput } from '@/components/input'
+import { Card } from '../Card'
 import { Button } from '@/components/button'
 import { ChangeEvent, useEffect, useState } from 'react'
-import Profile from '@/services/apis/profile/types/Profile'
-import { getProfileService, updatePassword, updateProfile } from '@/services/apis/profile/profile'
+import Profile from '@/pages/profile/types/Profile'
+import { getProfileService, updatePassword, updateProfile } from '@/services/apis/profile'
 import { isEmptyInput, validatedEmail, validatePhoneNumber, validPassword } from '@/utils'
-import StatusInput from '@/@types/status-input'
 
 const stylesInputPassword = {
   minWidth: '300px',
@@ -19,7 +18,14 @@ const stylesInputInfo = {
   maxWidth: '500px',
 }
 
-type ChangePassword = {
+const titleStyle = {
+  color: '#9e9e9e',
+  marginBottom: '4px',
+  fontSize: '13px',
+}
+
+
+export type ChangePassword = {
   currentPassword: string
   newPassword: string
 }
@@ -396,18 +402,15 @@ const AccountSetting = () => {
 
   return (
     <div className={clsx(styles['container'], 'h-full')}>
-      <h2 className={clsx(styles['title'])}>Account Setting</h2>
-      <div className={clsx('h-full overflow-y-auto')}>
+      <h2 className={clsx('text-[22px] font-medium')}>Account Setting</h2>
+      <div className={clsx(styles['scrollbar'] ,'h-full overflow-y-auto')}>
         <Card className={clsx(styles['card-info'])}>
           <div>
             <h3 className={clsx(styles['title-info'])}>Personal Information</h3>
             <div className={clsx('mt-[12px] flex flex-wrap gap-y-[12px]')}>
               <Input
                 style={stylesInputInfo}
-                titleStyle={{
-                  color: '#9e9e9e',
-                  marginBottom: '4px',
-                }}
+                titleStyle={titleStyle}
                 onChange={(e) => {
                   handleOnChangeInput('first_name', e)
                 }}
@@ -420,10 +423,7 @@ const AccountSetting = () => {
               />
               <Input
                 style={stylesInputInfo}
-                titleStyle={{
-                  color: '#9e9e9e',
-                  marginBottom: '4px',
-                }}
+                titleStyle={titleStyle}
                 onChange={(e) => {
                   handleOnChangeInput('last_name', e)
                 }}
@@ -436,10 +436,7 @@ const AccountSetting = () => {
               />
               <Input
                 style={stylesInputInfo}
-                titleStyle={{
-                  color: '#9e9e9e',
-                  marginBottom: '4px',
-                }}
+                titleStyle={titleStyle}
                 onChange={(e) => {
                   handleOnChangeInput('email', e)
                 }}
@@ -452,10 +449,7 @@ const AccountSetting = () => {
               />
               <Input
                 style={stylesInputInfo}
-                titleStyle={{
-                  color: '#9e9e9e',
-                  marginBottom: '4px',
-                }}
+                titleStyle={titleStyle}
                 onChange={(e) => {
                   handleOnChangeInput('phone', e)
                 }}
@@ -478,10 +472,7 @@ const AccountSetting = () => {
             <div className={clsx('mt-[12px] flex gap-[12px] gap-y-[12px]')}>
               <Input
                 style={stylesInputPassword}
-                titleStyle={{
-                  color: '#9e9e9e',
-                  marginBottom: '4px',
-                }}
+                titleStyle={titleStyle}
                 onChange={(e) => {
                   setChangePassword({
                     ...changePassword,
@@ -497,10 +488,7 @@ const AccountSetting = () => {
               />
               <Input
                 style={stylesInputPassword}
-                titleStyle={{
-                  color: '#9e9e9e',
-                  marginBottom: '4px',
-                }}
+                titleStyle={titleStyle}
                 onChange={(e) => {
                   setChangePassword({
                     ...changePassword,

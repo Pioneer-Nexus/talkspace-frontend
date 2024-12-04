@@ -1,8 +1,8 @@
-import Profile from "./types/Profile"
+import Profile from "../../pages/profile/types/Profile"
 import myProfileData from '@/mock-data/my-profile.json'
-import Response from "./types/Response"
-import UpdateProfile from "./types/UpdateProfile";
-import UpdatePassword from "./types/UpdatePass";
+import Response from "../../pages/profile/types/Response"
+import UpdateProfile from "../../pages/profile/types/UpdateProfile";
+import { ChangePassword } from "@/pages/profile/account-setting/AccountSetting";
 
 const getProfileService = (): Promise<Profile> => {
     return new Promise((resolve, reject) => {
@@ -46,7 +46,7 @@ const getProfileService = (): Promise<Profile> => {
     });
   };
 
-  const updatePassword = (data: UpdatePassword): Promise<Response> => {
+  const updatePassword = (data: ChangePassword): Promise<Response> => {
     return new Promise((resolve) => {
       resolve({
         statusCode: 200,

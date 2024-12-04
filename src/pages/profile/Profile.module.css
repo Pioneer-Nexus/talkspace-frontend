@@ -3,11 +3,11 @@
 }
 
 .container {
-    @apply bg-[#fff] max-w-[1280px] mx-auto h-full px-[70px] rounded-lg border-[#a7a7a7] border-[1px] flex gap-x-2 py-[20px]
+    @apply bg-[#fff] max-w-[1280px] mx-auto h-full px-[70px] rounded-lg flex gap-x-2 py-[20px]
 }
 
 .tabs-navigate {
-    @apply flex flex-col gap-y-2 pt-[54px]
+    @apply flex flex-col gap-y-2 pt-[64px]
 }
 
 .navigate {
