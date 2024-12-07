@@ -15,12 +15,12 @@ const titleStyle = {
 
 const MyAccount = () => {
   const [myProfile, setMyProfile] = useState<Profile>({
-    first_name: '',
-    last_name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
     city: '',
-    home_address: '',
+    homeAddress: '',
     country: '',
     birthday: '',
     password: '12345678',
@@ -54,7 +54,7 @@ const MyAccount = () => {
           </Avatar>
           <div className={clsx('ms-[8px] flex flex-col justify-between')}>
             <p className={clsx('inline-block')}>
-              {myProfile.first_name} {myProfile.last_name}
+              {myProfile.firstName} {myProfile.lastName}
             </p>
             <p className={clsx('text-[14px] text-[#858585]')}>{myProfile.birthday}</p>
           </div>
@@ -63,8 +63,8 @@ const MyAccount = () => {
           <div>
             <h3 className={clsx(styles['title-info'])}>Personal Information</h3>
             <div className={clsx('mt-[12px] grid grid-cols-[repeat(2,300px)] gap-y-[12px]')}>
-              <Input titleStyle={titleStyle} size='small' title='First Name' titlePosition='top' readonly={true} value={myProfile.first_name} />
-              <Input titleStyle={titleStyle} size='small' title='Last Name' titlePosition='top' readonly={true} value={myProfile.last_name} />
+              <Input titleStyle={titleStyle} size='small' title='First Name' titlePosition='top' readonly={true} value={myProfile.firstName} />
+              <Input titleStyle={titleStyle} size='small' title='Last Name' titlePosition='top' readonly={true} value={myProfile.lastName} />
               <Input titleStyle={titleStyle} size='small' title='Email' titlePosition='top' readonly={true} value={myProfile.email} />
               <Input titleStyle={titleStyle} size='small' title='Phone' titlePosition='top' readonly={true} value={myProfile.phone} />
             </div>
@@ -76,7 +76,7 @@ const MyAccount = () => {
             <div className={clsx('mt-[12px] grid grid-cols-[repeat(2,300px)] gap-y-[12px]')}>
               <Input titleStyle={titleStyle} size='small' title='Country' titlePosition='top' readonly={true} value={myProfile.country} />
               <Input titleStyle={titleStyle} size='small' title='City' titlePosition='top' readonly={true} value={myProfile.city} />
-              <Input titleStyle={titleStyle} size='small' title='Street' titlePosition='top' readonly={true} value={myProfile.home_address} />
+              <Input titleStyle={titleStyle} size='small' title='Street' titlePosition='top' readonly={true} value={myProfile.homeAddress} />
             </div>
           </div>
         </Card>
