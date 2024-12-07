@@ -1,27 +1,27 @@
 .layout {
-    @apply bg-[#e9e9e9] h-screen py-[20px] px-[20px]
+  @apply h-screen bg-[#e9e9e9] px-[20px] py-[20px];
 }
 
 .container {
-    @apply bg-[#fff] max-w-[1280px] mx-auto h-full px-[70px] rounded-lg flex gap-x-2 py-[20px]
+  @apply mx-auto flex h-full max-w-[1280px] gap-x-2 rounded-lg bg-[#fff] px-[70px] py-[20px];
 }
 
-.tabs-navigate {
-    @apply flex flex-col gap-y-2 pt-[64px]
+.tab-navigate {
+  @apply flex flex-col gap-y-2 pt-[64px];
 }
 
 .navigate {
-    @apply border-none text-left block  transition ease-linear w-[180px] py-[8px];
+  @apply block w-[180px] border-none py-[8px] text-left transition ease-linear;
 }
 
-.navigate:hover{
-    @apply bg-[#e2e2e2];
+.navigate:hover {
+  @apply bg-[#e2e2e2];
 }
 
 .tab-active {
-    @apply bg-[#8dbdd2] text-[#fff]
+  @apply bg-[#8dbdd2] text-[#fff];
 }
 
 .tab-content {
-    @apply w-full py-[12px]
+  @apply w-full py-[12px];
 }

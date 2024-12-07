@@ -1,13 +1,13 @@
 type Profile = {
-    first_name: string
-    last_name: string
-    email: string
-    phone: string
-    city: string
-    home_address: string
-    country: string,
-    birthday: string,
-    password: string
-  }
-  
-  export default Profile
+  firstName: string
+  lastName: string
+  email: string
+  phone: string
+  city: string
+  homeAddress: string
+  country: string
+  birthday: string
+  password: string
+}
+
+export default Profile

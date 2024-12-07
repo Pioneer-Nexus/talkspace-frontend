@@ -1,57 +1,32 @@
-import clsx from 'clsx'
-import styles from './Profile.module.css'
 import { Button } from '@/components'
-import { useState } from 'react'
-import MyAccount from '@/pages/profile/my-account/MyAccount'
 import AccountSetting from '@/pages/profile/account-setting/AccountSetting'
+import MyAccount from '@/pages/profile/my-account/MyAccount'
+import clsx from 'clsx'
+import { useState } from 'react'
+import styles from './Profile.module.css'
 
-type Tabs = {
-  account: boolean
-  setting: boolean
-}
+type Tab = 'account' | 'setting'
 
 const ProfilePage = () => {
-  const [tabs, setTabs] = useState<Tabs>({
-    account: true,
-    setting: false,
-  })
+  const [tab, setTab] = useState<Tab>('account')
 
-  const handleSwitchTabs = (tab: string) => {
-    setTabs(() => {
-      const newTabs = Object.assign(
-        {
-          account: false,
-          setting: false,
-        },
-        { [tab]: true },
-      )
-      return newTabs
-    })
+  const handleSwitchTab = (tab: Tab) => {
+    setTab(tab)
   }
   return (
     <div className={clsx(styles['layout'])}>
       <div className={clsx(styles['container'])}>
-        <nav className={clsx(styles['tabs-navigate'])}>
-          <Button
-            onClick={() => {
-              handleSwitchTabs('account')
-            }}
-            className={clsx(styles['navigate'], styles[`tab-${tabs.account && 'active'}`])}
-          >
+        <nav className={clsx(styles['tab-navigate'])}>
+          <Button onClick={() => handleSwitchTab('account')} className={clsx(styles['navigate'], tab === 'account' && styles['tab-active'])}>
             My Profile
           </Button>
-          <Button
-            onClick={() => {
-              handleSwitchTabs('setting')
-            }}
-            className={clsx(styles['navigate'], styles[`tab-${tabs.setting && 'active'}`])}
-          >
+          <Button onClick={() => handleSwitchTab('setting')} className={clsx(styles['navigate'], tab === 'setting' && styles['tab-active'])}>
             Account Setting
           </Button>
         </nav>
         <div className={clsx(styles['tab-content'])}>
-          {tabs.account && <MyAccount />}
-          {tabs.setting && <AccountSetting />}
+          {tab === 'account' && <MyAccount />}
+          {tab === 'setting' && <AccountSetting />}
         </div>
       </div>
     </div>
