@@ -16,6 +16,9 @@ export const TestPage: FC = () => {
       <Button type='primary' href={`/${testURL}/avatar`}>
         Go to Avatar Test
       </Button>
+      <Button type='primary' href={`/${testURL}/badge`}>
+        Go to Badge Test
+      </Button>
     </div>
   )
 }

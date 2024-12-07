@@ -1,13 +1,12 @@
-import clsx from 'clsx'
-// import { useEffect, useState } from 'react'
-import styles from './AccountSetting.module.css'
-import { Input, StatusInput } from '@/components/input'
-import { Card } from '../Card'
 import { Button } from '@/components/button'
-import { ChangeEvent, useEffect, useState } from 'react'
+import { Input, StatusInput } from '@/components/input'
 import Profile from '@/pages/profile/types/Profile'
 import { getProfileService, updatePassword, updateProfile } from '@/services/apis/profile'
 import { isEmptyInput, validatedEmail, validatePhoneNumber, validPassword } from '@/utils'
+import clsx from 'clsx'
+import { ChangeEvent, useEffect, useState } from 'react'
+import { Card } from '../Card'
+import styles from './AccountSetting.module.css'
 
 const stylesInputPassword = {
   minWidth: '300px',
@@ -24,18 +23,17 @@ const titleStyle = {
   fontSize: '13px',
 }
 
-
 export type ChangePassword = {
   currentPassword: string
   newPassword: string
 }
 
 type ValidateFormProfile = {
-  first_name: {
+  firstName: {
     status: StatusInput
     message: string
   }
-  last_name: {
+  lastName: {
     status: StatusInput
     message: string
   }
@@ -51,7 +49,7 @@ type ValidateFormProfile = {
     status: StatusInput
     message: string
   }
-  home_address: {
+  homeAddress: {
     status: StatusInput
     message: string
   }
@@ -78,23 +76,23 @@ type ValidateChangePassword = {
 
 const AccountSetting = () => {
   const [profile, setProfile] = useState<Profile>({
-    first_name: 'Phạm',
-    last_name: 'Thanh Tùng',
+    firstName: 'Phạm',
+    lastName: 'Thanh Tùng',
     email: 'phamthanhtung12.work@gmail.com',
     phone: '123456789',
     city: 'Hồ Chí Minh',
-    home_address: '14 street 5',
+    homeAddress: '14 street 5',
     country: 'Bình Thuận',
     birthday: '12/04/2000',
     password: '12345678',
   })
 
   const [validateInputProfile, setValidateInputProfile] = useState<ValidateFormProfile>({
-    first_name: {
+    firstName: {
       status: 'info',
       message: '',
     },
-    last_name: {
+    lastName: {
       status: 'info',
       message: '',
     },
@@ -110,7 +108,7 @@ const AccountSetting = () => {
       status: 'info',
       message: '',
     },
-    home_address: {
+    homeAddress: {
       status: 'info',
       message: '',
     },
@@ -147,11 +145,11 @@ const AccountSetting = () => {
 
   const validateFormProfile = () => {
     const validateInput: ValidateFormProfile = {
-      first_name: {
+      firstName: {
         status: 'info',
         message: '',
       },
-      last_name: {
+      lastName: {
         status: 'info',
         message: '',
       },
@@ -167,7 +165,7 @@ const AccountSetting = () => {
         status: 'info',
         message: '',
       },
-      home_address: {
+      homeAddress: {
         status: 'info',
         message: '',
       },
@@ -180,13 +178,13 @@ const AccountSetting = () => {
         message: '',
       },
     }
-    const isValidFirstName = isEmptyInput(profile.first_name)
-    const isValidLastName = isEmptyInput(profile.last_name)
+    const isValidFirstName = isEmptyInput(profile.firstName)
+    const isValidLastName = isEmptyInput(profile.lastName)
     const isValidEmail = validatedEmail(profile.email)
     const isValidPhone = validatePhoneNumber(profile.phone)
     const isValidCity = isEmptyInput(profile.city)
     const isValidCounty = isEmptyInput(profile.country)
-    const isValidHomeAddress = isEmptyInput(profile.home_address)
+    const isValidHomeAddress = isEmptyInput(profile.homeAddress)
     const isValidBirthday = isEmptyInput(profile.birthday)
     if (
       isValidFirstName &&
@@ -201,13 +199,13 @@ const AccountSetting = () => {
       return true
     }
     if (!isValidFirstName) {
-      validateInput.first_name = {
+      validateInput.firstName = {
         status: 'error',
         message: '* Please enter first name!',
       }
     }
     if (!isValidLastName) {
-      validateInput.last_name = {
+      validateInput.lastName = {
         status: 'error',
         message: '* Please enter last name!',
       }
@@ -225,19 +223,19 @@ const AccountSetting = () => {
       }
     }
     if (!isValidCounty) {
-      validateInput.first_name = {
+      validateInput.firstName = {
         status: 'error',
         message: '* Please enter country!',
       }
     }
     if (!isValidBirthday) {
-      validateInput.first_name = {
+      validateInput.firstName = {
         status: 'error',
         message: '* Please enter you birthday!',
       }
     }
     if (!isValidHomeAddress) {
-      validateInput.first_name = {
+      validateInput.firstName = {
         status: 'error',
         message: '* Please enter you address!',
       }
@@ -247,19 +245,19 @@ const AccountSetting = () => {
     return false
   }
 
-  const handleOnChangeInput = (field: string = 'first_name', event: ChangeEvent<HTMLInputElement>) => {
+  const handleOnChangeInput = (field: string = 'firstName', event: ChangeEvent<HTMLInputElement>) => {
     const valueInput = event.target.value
     switch (field) {
-      case 'first_name':
+      case 'firstName':
         setProfile({
           ...profile,
-          first_name: valueInput,
+          firstName: valueInput,
         })
         break
-      case 'last_name':
+      case 'lastName':
         setProfile({
           ...profile,
-          last_name: valueInput,
+          lastName: valueInput,
         })
         break
       case 'email':
@@ -280,10 +278,10 @@ const AccountSetting = () => {
           city: valueInput,
         })
         break
-      case 'home_address':
+      case 'homeAddress':
         setProfile({
           ...profile,
-          home_address: valueInput,
+          homeAddress: valueInput,
         })
         break
         break
@@ -304,11 +302,11 @@ const AccountSetting = () => {
       const response = await updateProfile(profile)
       if (response.statusCode === 200) {
         setValidateInputProfile({
-          first_name: {
+          firstName: {
             status: 'info',
             message: '',
           },
-          last_name: {
+          lastName: {
             status: 'info',
             message: '',
           },
@@ -324,7 +322,7 @@ const AccountSetting = () => {
             status: 'info',
             message: '',
           },
-          home_address: {
+          homeAddress: {
             status: 'info',
             message: '',
           },
@@ -403,7 +401,7 @@ const AccountSetting = () => {
   return (
     <div className={clsx(styles['container'], 'h-full')}>
       <h2 className={clsx('text-[22px] font-medium')}>Account Setting</h2>
-      <div className={clsx(styles['scrollbar'] ,'h-full overflow-y-auto')}>
+      <div className={clsx(styles['scrollbar'], 'h-full overflow-y-auto')}>
         <Card className={clsx(styles['card-info'])}>
           <div>
             <h3 className={clsx(styles['title-info'])}>Personal Information</h3>
@@ -412,27 +410,27 @@ const AccountSetting = () => {
                 style={stylesInputInfo}
                 titleStyle={titleStyle}
                 onChange={(e) => {
-                  handleOnChangeInput('first_name', e)
+                  handleOnChangeInput('firstName', e)
                 }}
-                status={validateInputProfile.first_name.status}
-                message={validateInputProfile.first_name.message}
+                status={validateInputProfile.firstName.status}
+                message={validateInputProfile.firstName.message}
                 size='default'
                 title='First Name'
                 titlePosition='top'
-                value={profile.first_name}
+                value={profile.firstName}
               />
               <Input
                 style={stylesInputInfo}
                 titleStyle={titleStyle}
                 onChange={(e) => {
-                  handleOnChangeInput('last_name', e)
+                  handleOnChangeInput('lastName', e)
                 }}
-                status={validateInputProfile.last_name.status}
-                message={validateInputProfile.last_name.message}
+                status={validateInputProfile.lastName.status}
+                message={validateInputProfile.lastName.message}
                 size='default'
                 title='Last Name'
                 titlePosition='top'
-                value={profile.last_name}
+                value={profile.lastName}
               />
               <Input
                 style={stylesInputInfo}

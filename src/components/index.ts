@@ -1,4 +1,5 @@
 export * from './avatar'
+export * from './badge'
 export * from './button'
 export * from './chat-penal'
 export * from './dashboard-sidebar'
