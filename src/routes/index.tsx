@@ -1,23 +1,22 @@
 import { useKeyboardShortcut } from '@/hooks'
-import { Key } from '@/interfaces'
 import { AvatarTestPage, BadgeTestPage, ButtonTestPage, InputTestPage, TestPage } from '@/pages'
+import ProfilePage from '@/pages/profile/ProfilePage'
 import { useHashedURL } from '@/stores'
 import { Outlet, Route, BrowserRouter as Router, Routes, useNavigate } from 'react-router-dom'
 import { InitialLayout } from '../layouts/InitialLayout'
 import { NotFound } from '../pages'
 import { InitialPage } from '../pages/InitialPage'
 import { LoginPage } from '../pages/login/LoginPage'
-import ProfilePage from '@/pages/profile/ProfilePage'
 
 const RouteComponent = () => {
   const navigate = useNavigate()
   const testURL = useHashedURL((state) => state.testURL)
 
-  useKeyboardShortcut([Key.THREE, Key.FOUR], () => {
+  useKeyboardShortcut([3, 4], () => {
     navigate(`/${testURL}`)
   })
 
-  useKeyboardShortcut([Key.FIVE], () => {
+  useKeyboardShortcut([5], () => {
     navigate(`/`)
   })
 

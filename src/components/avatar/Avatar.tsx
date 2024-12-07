@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { CSSProperties, FC, PropsWithChildren, ReactNode, useEffect, useRef } from 'react'
 import styles from './styles.module.css'
-interface AvatarProps extends PropsWithChildren {
+interface Props extends PropsWithChildren {
   icon?: ReactNode
   size?: number
   src?: string | ReactNode
@@ -9,7 +9,7 @@ interface AvatarProps extends PropsWithChildren {
   style?: CSSProperties
 }
 
-export const Avatar: FC<AvatarProps> = (props) => {
+export const Avatar: FC<Props> = (props) => {
   const { children, icon, size = 16, src, shape = 'circle', style } = props
   const textRef = useRef<HTMLSpanElement>(null)
 

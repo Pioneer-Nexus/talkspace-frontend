@@ -6,16 +6,18 @@ export const useKeyboardShortcut = (keys: Key[], callback: () => void) => {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      const key = event.key.toUpperCase()
-      pressedKeys.current.add(key as Key)
+      const key = event.key
+      const typedKey = /\d/.test(key) ? Number(key) : key
+      pressedKeys.current.add(typedKey as Key)
     }
 
     const handleKeyUp = (event: KeyboardEvent) => {
       const allKeysPressed = keys.every((key) => pressedKeys.current.has(key))
       if (allKeysPressed) callback()
 
-      const key = event.key.toUpperCase()
-      pressedKeys.current.delete(key as Key)
+      const key = event.key
+      const typedKey = /\d/.test(key) ? Number(key) : key
+      pressedKeys.current.delete(typedKey as Key)
     }
 
     window.addEventListener('keydown', handleKeyDown)
