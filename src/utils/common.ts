@@ -68,3 +68,26 @@ export const validatePhoneNumber = (phoneNumber: string) => {
   if (isPhone) return true
   return false
 }
+
+export const isEmptyInput = (input: string) => {
+  if (input.trim()) {
+    return true
+  }
+  return false
+}
+
+export const validatedEmail = (input: string) => {
+  const pattern = /^[a-zA-z0-9]+@([a-z]+\.)+[\w-]{2,4}$/
+  if (input.trim()) {
+    const result: boolean = pattern.test(input)
+    return result
+  }
+  return false
+}
+
+export const validPassword = (input: string) => {
+  if (input.trim().length >= 8) {
+    return true
+  }
+  return false
+}
