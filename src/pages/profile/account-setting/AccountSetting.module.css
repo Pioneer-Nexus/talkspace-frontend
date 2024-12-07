@@ -1,0 +1,12 @@
+.card-info {
+    @apply mt-[18px] flex overflow-y-auto
+}
+
+
+.save-password-btn {
+    @apply h-[40px] mt-[24px] bg-[#000] text-[#fff]
+}
+
+.title-info {
+    @apply text-[18px]
+}

@@ -5,7 +5,7 @@ import { ChangeEvent, CSSProperties, FC, useState } from 'react'
 import styles from './Input.module.css'
 
 type InputType = 'text' | 'number' | 'email' | 'password'
-type StatusInput = 'info' | 'error' | 'warning' | 'success' | 'default'
+export type StatusInput = 'info' | 'error' | 'warning' | 'success' | 'default'
 type SizeInput = 'default' | 'large' | 'small'
 type TitlePosition = 'top' | 'left'
 interface InputProps {
@@ -21,6 +21,7 @@ interface InputProps {
   titlePosition?: TitlePosition
   title?: string
   titleStyle?: CSSProperties
+  readonly?: boolean,
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
   onBlur?: (event: ChangeEvent<HTMLInputElement>) => void
   onFocus?: (event: ChangeEvent<HTMLInputElement>) => void
@@ -40,6 +41,7 @@ export const Input: FC<InputProps> = (props) => {
     value = '',
     titlePosition = 'top',
     titleStyle,
+    readonly = false,
     onChange = () => {},
     onBlur = () => {},
     onFocus = () => {},
@@ -70,6 +72,7 @@ export const Input: FC<InputProps> = (props) => {
         styles[`position-${titlePosition}`],
         styles[`size-${size}`],
         disabled && styles['disabled'],
+        readonly && styles['readonly']
       )}
     >
       {title && (
@@ -79,7 +82,7 @@ export const Input: FC<InputProps> = (props) => {
       )}
       <div className={clsx(styles['wrapper'])}>
         {icon && icon}
-        <input {...commonProps} />
+        {readonly ? <span className={clsx(styles['value-readonly'])}>{value}</span> : <input {...commonProps} />}
         {type === 'password' && (
           <div onClick={showHidePassword}>{inputType === 'password' ? <EyeOffIcon fontSize='20' /> : <EyeIcon fontSize='20' />}</div>
         )}

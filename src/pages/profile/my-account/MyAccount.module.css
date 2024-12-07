@@ -1,0 +1,7 @@
+.card-info {
+    @apply mt-[18px] flex
+}
+
+.title-info {
+    @apply text-[18px]
+}
