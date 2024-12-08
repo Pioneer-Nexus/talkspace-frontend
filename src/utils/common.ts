@@ -17,7 +17,7 @@ export const formatRemainingTime = (time: MomentInput) => {
 }
 
 export const randomizeTime = (start: string, end: string): string => {
-  // n seconds -> n minites -> n hours -> n days
+  // n seconds -> n minutes -> n hours -> n days
   const parseTime = (timeStr: string): number => {
     const unit = timeStr.slice(-1) // Get the last character (s, m, h, or d)
     const value = parseInt(timeStr.slice(0, -1)) // Get the numeric value

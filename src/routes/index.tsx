@@ -12,12 +12,15 @@ const RouteComponent = () => {
   const navigate = useNavigate()
   const testURL = useHashedURL((state) => state.testURL)
 
-  useKeyboardShortcut([3, 4], () => {
+  useKeyboardShortcut(['F1'], () => {
     navigate(`/${testURL}`)
   })
 
-  useKeyboardShortcut([5], () => {
-    navigate(`/`)
+  useKeyboardShortcut(['F2'], () => {
+    navigate('/')
+  })
+  useKeyboardShortcut(['F3'], () => {
+    navigate('/sign-in')
   })
 
   return (

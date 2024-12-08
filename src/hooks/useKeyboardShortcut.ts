@@ -7,7 +7,7 @@ export const useKeyboardShortcut = (keys: Key[], callback: () => void) => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const key = event.key
-      const typedKey = /\d/.test(key) ? Number(key) : key
+      const typedKey = /^\d$/.test(key) ? Number(key) : key
       pressedKeys.current.add(typedKey as Key)
     }
 
@@ -16,7 +16,7 @@ export const useKeyboardShortcut = (keys: Key[], callback: () => void) => {
       if (allKeysPressed) callback()
 
       const key = event.key
-      const typedKey = /\d/.test(key) ? Number(key) : key
+      const typedKey = /^\d$/.test(key) ? Number(key) : key
       pressedKeys.current.delete(typedKey as Key)
     }
 
