@@ -1,7 +1,8 @@
 import EyeIcon from '@/assets/images/svgs/eye.svg'
 import EyeOffIcon from '@/assets/images/svgs/eye_off.svg'
 import clsx from 'clsx'
-import { ChangeEvent, CSSProperties, FC, KeyboardEvent, useState } from 'react'
+import { ChangeEvent, CSSProperties, forwardRef, KeyboardEvent, Ref, useState } from 'react'
+import { UseFormRegisterReturn } from 'react-hook-form'
 import styles from './Input.module.css'
 
 type InputType = 'text' | 'number' | 'email' | 'password'
@@ -23,6 +24,8 @@ interface Props {
   title?: string
   titleStyle?: CSSProperties
   readonly?: boolean
+  register?: UseFormRegisterReturn
+  label?: boolean
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
   onBlur?: (event: ChangeEvent<HTMLInputElement>) => void
   onFocus?: (event: ChangeEvent<HTMLInputElement>) => void
@@ -30,7 +33,7 @@ interface Props {
   extra?: JSX.Element
 }
 
-export const Input: FC<Props> = (props) => {
+const InputRef = (props: Props, ref: Ref<HTMLInputElement>) => {
   const {
     disabled = false,
     icon,
@@ -41,27 +44,30 @@ export const Input: FC<Props> = (props) => {
     style,
     title = '',
     type = 'text',
-    value = '',
+    // value = '',
     titlePosition = 'top',
     titleStyle,
     readonly = false,
-    onChange = () => {},
-    onBlur = () => {},
-    onFocus = () => {},
+    register,
+    onChange,
+    onBlur,
+    onFocus,
     onEnter = () => {},
     extra,
   } = props
-
+  console.log(register, ref)
   const [inputType, setInputType] = useState<InputType>(type)
 
   const commonProps = {
-    value: value,
+    // value,
     type: inputType,
-    placeholder: placeholder,
-    disabled: disabled,
-    onChange: onChange,
-    onBlur: onBlur,
-    onFocus: onFocus,
+    placeholder,
+    disabled,
+    readOnly: readonly,
+    onChange,
+    onBlur,
+    onFocus,
+    ...register, // Spread the result of `register` directly into input props
   }
 
   const showHidePassword = () => {
@@ -93,7 +99,7 @@ export const Input: FC<Props> = (props) => {
       )}
       <div className={clsx(styles['wrapper'])}>
         {icon && icon}
-        <input {...commonProps} onKeyDown={handleKeyDown} />
+        <input {...commonProps} onKeyDown={handleKeyDown} ref={ref} />
         {type === 'password' && (
           <div onClick={showHidePassword}>{inputType === 'password' ? <EyeOffIcon fontSize='20' /> : <EyeIcon fontSize='20' />}</div>
         )}
@@ -103,3 +109,5 @@ export const Input: FC<Props> = (props) => {
     </div>
   )
 }
+
+export const Input = forwardRef<HTMLInputElement, Props>(InputRef)

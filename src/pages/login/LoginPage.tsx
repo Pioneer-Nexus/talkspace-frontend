@@ -3,6 +3,7 @@ import RegisterImage from '@/assets/images/svgs/register.svg'
 import clsx from 'clsx'
 import { useState } from 'react'
 import style from './Login.module.css'
+import { LoginForm } from './LoginForm'
 
 enum Types {
   signin = 'signin',
@@ -28,7 +29,9 @@ export const LoginPage = () => {
     <div className={clsx(type === Types.signup && style['sign-up-mode'], style.container)}>
       <div className={clsx(style['.forms-container'])}>
         <div className={clsx(style['signin-signup'])}>
-          <form className={clsx(style['form-item'], style['sign-in-form'])}>Sign in</form>
+          <form className={clsx(style['form-item'], style['sign-in-form'])}>
+            <LoginForm />
+          </form>
           <form className={clsx(style['form-item'], style['sign-up-form'])}>Sign up</form>
         </div>
       </div>
