@@ -1,8 +1,7 @@
 import EyeIcon from '@/assets/images/svgs/eye.svg'
 import EyeOffIcon from '@/assets/images/svgs/eye_off.svg'
 import clsx from 'clsx'
-import { ChangeEvent, CSSProperties, forwardRef, KeyboardEvent, Ref, useState } from 'react'
-import { UseFormRegisterReturn } from 'react-hook-form'
+import { ChangeEvent, CSSProperties, forwardRef, KeyboardEvent, useState } from 'react'
 import styles from './Input.module.css'
 
 type InputType = 'text' | 'number' | 'email' | 'password'
@@ -24,50 +23,41 @@ interface Props {
   title?: string
   titleStyle?: CSSProperties
   readonly?: boolean
-  register?: UseFormRegisterReturn
   label?: boolean
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
-  onBlur?: (event: ChangeEvent<HTMLInputElement>) => void
   onFocus?: (event: ChangeEvent<HTMLInputElement>) => void
   onEnter?: () => void
   extra?: JSX.Element
 }
 
-const InputRef = (props: Props, ref: Ref<HTMLInputElement>) => {
+export const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const {
     disabled = false,
     icon,
-    message = '',
+    message,
     placeholder = '',
     size = 'default',
     status,
     style,
-    title = '',
+    title,
     type = 'text',
-    // value = '',
     titlePosition = 'top',
     titleStyle,
     readonly = false,
-    register,
-    onChange,
-    onBlur,
     onFocus,
     onEnter = () => {},
     extra,
+    ...restProps
   } = props
-  console.log(register, ref)
+
   const [inputType, setInputType] = useState<InputType>(type)
 
   const commonProps = {
-    // value,
     type: inputType,
     placeholder,
     disabled,
     readOnly: readonly,
-    onChange,
-    onBlur,
     onFocus,
-    ...register, // Spread the result of `register` directly into input props
+    ...restProps,
   }
 
   const showHidePassword = () => {
@@ -108,6 +98,4 @@ const InputRef = (props: Props, ref: Ref<HTMLInputElement>) => {
       {message && <p className={clsx(styles['msg'])}>{message}</p>}
     </div>
   )
-}
-
-export const Input = forwardRef<HTMLInputElement, Props>(InputRef)
+})

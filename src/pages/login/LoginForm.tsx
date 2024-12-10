@@ -5,6 +5,7 @@ interface FormInput {
   username: string
   password: string
 }
+
 export const LoginForm = () => {
   const {
     register,
@@ -16,8 +17,8 @@ export const LoginForm = () => {
 
   return (
     <div className='space-y-5'>
-      <Input title='Username' register={register('username')} />
-      <Input title='Password' register={register('password')} />
+      <Input title='Username' {...register('username')} />
+      <Input title='Password' {...register('password')} />
       <Button block type='primary' onClick={handleSubmit(onSubmit)}>
         Sign in
       </Button>

@@ -14,7 +14,7 @@ export const ModeProvider: FC<PropsWithChildren> = (props) => {
   const { children } = props
   const [mode, setMode] = useLocalStorage<Modes>(LOCAL_STORAGE.THEME, Modes.LIGHT)
 
-  useKeyboardShortcut(['F3'], () => {
+  useKeyboardShortcut(['z', 9], () => {
     updateMode((mode) => (mode === Modes.DARK ? Modes.LIGHT : Modes.DARK))
   })
 
