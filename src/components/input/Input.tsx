@@ -48,7 +48,6 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
     extra,
     ...restProps
   } = props
-
   const [inputType, setInputType] = useState<InputType>(type)
 
   const commonProps = {

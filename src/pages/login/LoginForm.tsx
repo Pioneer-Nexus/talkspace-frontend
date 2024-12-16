@@ -1,4 +1,6 @@
 import { Button, Input } from '@/components'
+import { validateLogin } from '@/validations'
+import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 interface FormInput {
@@ -6,19 +8,24 @@ interface FormInput {
   password: string
 }
 
-export const LoginForm = () => {
-  const {
-    register,
-    handleSubmit,
-    // formState: { errors },
-  } = useForm<FormInput>({ defaultValues: { username: 'noah', password: 'test_password' } })
+const defaultFrom = { password: '', username: '' }
 
-  const onSubmit: SubmitHandler<FormInput> = (data) => console.log(data)
+export const LoginForm = () => {
+  const { register, handleSubmit } = useForm<FormInput>()
+
+  const [errorMessage, setErrorMessage] = useState<FormInput>(defaultFrom)
+
+  const onSubmit: SubmitHandler<FormInput> = (data) => {
+    const errors = validateLogin(data)
+    if (errors) {
+      setErrorMessage(errors)
+    }
+  }
 
   return (
     <div className='space-y-5'>
-      <Input title='Username' {...register('username')} />
-      <Input title='Password' {...register('password')} />
+      <Input title='Username' {...register('username')} message={errorMessage.username} onFocus={() => setErrorMessage(defaultFrom)} />
+      <Input title='Password' {...register('password')} message={errorMessage.password} onFocus={() => setErrorMessage(defaultFrom)} />
       <Button block type='primary' onClick={handleSubmit(onSubmit)}>
         Sign in
       </Button>
