@@ -1,4 +1,5 @@
 import { Button, Input } from '@/components'
+import { useLogin } from '@/graphql/mutations/useLogin'
 import { validateLogin } from '@/validations'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -11,6 +12,8 @@ interface FormInput {
 const defaultFrom = { password: '', username: '' }
 
 export const LoginForm = () => {
+  const { loginWithCredential, data } = useLogin()
+
   const { register, handleSubmit } = useForm<FormInput>()
 
   const [errorMessage, setErrorMessage] = useState<FormInput>(defaultFrom)
@@ -19,6 +22,8 @@ export const LoginForm = () => {
     const errors = validateLogin(data)
     if (errors) {
       setErrorMessage(errors)
+    } else {
+      loginWithCredential(data)
     }
   }
 
