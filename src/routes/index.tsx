@@ -2,11 +2,12 @@ import { useKeyboardShortcut } from '@/hooks'
 import { AvatarTestPage, BadgeTestPage, ButtonTestPage, InputTestPage, TestPage } from '@/pages'
 import ProfilePage from '@/pages/profile/ProfilePage'
 import { useHashedURL } from '@/stores'
-import { Outlet, Route, BrowserRouter as Router, Routes, useNavigate } from 'react-router-dom'
+import { Navigate, Outlet, Route, BrowserRouter as Router, Routes, useNavigate } from 'react-router-dom'
 import { InitialLayout } from '../layouts/InitialLayout'
 import { NotFound } from '../pages'
 import { InitialPage } from '../pages/InitialPage'
 import { LoginPage } from '../pages/login/LoginPage'
+import { Authenticated } from './Authenticated'
 
 const RouteComponent = () => {
   const navigate = useNavigate()
@@ -22,19 +23,19 @@ const RouteComponent = () => {
   useKeyboardShortcut(['z', 3], () => {
     navigate('/sign-in')
   })
-
   return (
     <Routes>
       <Route
         path='/'
         element={
-          <InitialLayout>
-            <Outlet />
-          </InitialLayout>
+          <Authenticated type='token' fallback={<Navigate to='/sign-in' />}>
+            <InitialLayout>
+              <Outlet />
+            </InitialLayout>
+          </Authenticated>
         }
       >
         <Route element={<InitialPage />} index />
-        <Route element={<LoginPage />} path='sign-in' />
         <Route element={<ProfilePage />} path='profile' />
 
         <Route path={testURL}>
@@ -44,9 +45,16 @@ const RouteComponent = () => {
           <Route path='input' element={<InputTestPage />} />
           <Route path='badge' element={<BadgeTestPage />} />
         </Route>
-
-        <Route element={<NotFound />} path='*' />
       </Route>
+      <Route
+        element={
+          <Authenticated type='public' fallback={<Navigate to='/' />}>
+            <LoginPage />
+          </Authenticated>
+        }
+        path='/sign-in'
+      />
+      <Route element={<NotFound />} path='*' />
     </Routes>
   )
 }
