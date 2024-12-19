@@ -1,24 +1,11 @@
-import { useMutation } from '@apollo/client'
+import { OperationVariables, useMutation } from '@apollo/client'
+import { Mutation } from '../graphql'
 import { LOGIN_WITH_CREDENTIAL } from './users'
 
-// type LoginVariables = {
-//   email: string
-//   password: string
-// }
-
-// type LoginHookResult = {
-//   loginWithCredential: (variables: LoginVariables) => Promise<any>
-//   data?: any
-//   loading: boolean
-//   error?: any
-// }
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const useLogin = () => {
-  const [dispatch, { data, loading, error }] = useMutation(LOGIN_WITH_CREDENTIAL)
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const loginWithCredential = (params: any) => {
+export const useLogin = <TParams extends OperationVariables>() => {
+  const [dispatch, { data: _data, loading, error }] = useMutation<Pick<Mutation, 'loginWithCredential'>, TParams>(LOGIN_WITH_CREDENTIAL)
+  const data = _data?.loginWithCredential
+  const loginWithCredential = (params: TParams) => {
     return dispatch({ variables: params })
   }
   return { loginWithCredential, data, loading, error }

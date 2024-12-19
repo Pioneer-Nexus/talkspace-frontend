@@ -3,6 +3,7 @@ import ChatIcon from '@/assets/images/svgs/chat.svg'
 import LogoIcon2 from '@/assets/images/svgs/logo2.svg'
 import LogoutIcon from '@/assets/images/svgs/logout.svg'
 import UserIcon from '@/assets/images/svgs/user.svg'
+import { AuthService } from '@/services'
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Avatar } from '../avatar'
@@ -12,7 +13,10 @@ export const DashboardSidebar: FC = () => {
   const navigate = useNavigate()
 
   const handleLogout = () => {
-    navigate('/sign-in')
+    const result = AuthService.instance.logout()
+    if ('success' in result && result.success) {
+      navigate(result.redirectTo)
+    }
   }
 
   return (

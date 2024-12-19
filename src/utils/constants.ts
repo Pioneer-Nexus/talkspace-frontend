@@ -11,3 +11,9 @@ export const APP_TITLE = {
     3: appConfig.title + ' | Avatar Test',
   },
 }
+
+export const ERROR_CODE = {
+  LOGIN_FAIL: 'LOGIN_FAIL',
+  REGISTER_FAIL: 'REGISTER_FAIL',
+  LOGOUT_FAIL: 'lOGOUT_FAIL',
+}

@@ -1,4 +1,4 @@
-import { useLocalStorage } from '@/hooks'
+import { AuthService } from '@/services'
 import { LOCAL_STORAGE } from '@/utils'
 import { FC, PropsWithChildren, ReactNode } from 'react'
 
@@ -10,9 +10,7 @@ interface Props extends PropsWithChildren {
 export const Authenticated: FC<Props> = (props) => {
   const { children, type, fallback } = props
 
-  const [accessToken] = useLocalStorage(LOCAL_STORAGE.ACCESS_TOKEN)
-
-  console.log('token', accessToken)
+  const accessToken = AuthService.instance.getAccessToken(LOCAL_STORAGE.ACCESS_TOKEN)
 
   if (accessToken && type === 'token') return <>{children}</>
   if (!accessToken && type === 'token') return <>{fallback}</>

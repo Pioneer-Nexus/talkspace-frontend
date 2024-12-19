@@ -1,20 +1,17 @@
 import { Button, Input } from '@/components'
 import { useLogin } from '@/graphql/mutations/useLogin'
-import { useLocalStorage } from '@/hooks'
-import { LOCAL_STORAGE } from '@/utils'
+import { AuthService } from '@/services'
 import { LoginInput, validateLogin } from '@/validations'
 import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
 const defaultFrom = { password: '', username: '' }
-
 export const LoginForm = () => {
-  const { loginWithCredential, data } = useLogin()
+  const { loginWithCredential, data } = useLogin<LoginInput>()
   const navigate = useNavigate()
-  const [accessToken, setAccessToken] = useLocalStorage(LOCAL_STORAGE.ACCESS_TOKEN)
 
-  const { register, handleSubmit } = useForm<LoginInput>({ defaultValues: { username: 'hy2', password: '1' } })
+  const { register, handleSubmit } = useForm<LoginInput>()
 
   const [errorMessage, setErrorMessage] = useState<LoginInput>(defaultFrom)
 
@@ -26,15 +23,14 @@ export const LoginForm = () => {
       loginWithCredential(data)
     }
   }
-
   useEffect(() => {
-    if (!data?.loginWithCredential?.accessToken) return
-    setAccessToken(data?.loginWithCredential?.accessToken)
-    if (!accessToken) return
-    setTimeout(() => {
-      navigate('/')
-    }, 1000)
-  }, [data, accessToken])
+    if (data?.accessToken) {
+      const result = AuthService.instance.login(data.accessToken)
+      if ('success' in result && result.success) {
+        navigate(result.redirectTo)
+      }
+    }
+  }, [data?.accessToken, navigate])
 
   return (
     <div className='space-y-5'>
