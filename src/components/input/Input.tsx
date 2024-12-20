@@ -1,7 +1,7 @@
 import EyeIcon from '@/assets/images/svgs/eye.svg'
 import EyeOffIcon from '@/assets/images/svgs/eye_off.svg'
 import clsx from 'clsx'
-import { ChangeEvent, CSSProperties, FC, KeyboardEvent, useState } from 'react'
+import { ChangeEvent, CSSProperties, forwardRef, KeyboardEvent, useState } from 'react'
 import styles from './Input.module.css'
 
 type InputType = 'text' | 'number' | 'email' | 'password'
@@ -23,45 +23,40 @@ interface Props {
   title?: string
   titleStyle?: CSSProperties
   readonly?: boolean
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
-  onBlur?: (event: ChangeEvent<HTMLInputElement>) => void
+  label?: boolean
   onFocus?: (event: ChangeEvent<HTMLInputElement>) => void
   onEnter?: () => void
   extra?: JSX.Element
 }
 
-export const Input: FC<Props> = (props) => {
+export const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const {
     disabled = false,
     icon,
-    message = '',
+    message,
     placeholder = '',
     size = 'default',
     status,
     style,
-    title = '',
+    title,
     type = 'text',
-    value = '',
     titlePosition = 'top',
     titleStyle,
     readonly = false,
-    onChange = () => {},
-    onBlur = () => {},
-    onFocus = () => {},
+    onFocus,
     onEnter = () => {},
     extra,
+    ...restProps
   } = props
-
   const [inputType, setInputType] = useState<InputType>(type)
 
   const commonProps = {
-    value: value,
     type: inputType,
-    placeholder: placeholder,
-    disabled: disabled,
-    onChange: onChange,
-    onBlur: onBlur,
-    onFocus: onFocus,
+    placeholder,
+    disabled,
+    readOnly: readonly,
+    onFocus,
+    ...restProps,
   }
 
   const showHidePassword = () => {
@@ -93,7 +88,7 @@ export const Input: FC<Props> = (props) => {
       )}
       <div className={clsx(styles['wrapper'])}>
         {icon && icon}
-        <input {...commonProps} onKeyDown={handleKeyDown} />
+        <input {...commonProps} onKeyDown={handleKeyDown} ref={ref} />
         {type === 'password' && (
           <div onClick={showHidePassword}>{inputType === 'password' ? <EyeOffIcon fontSize='20' /> : <EyeIcon fontSize='20' />}</div>
         )}
@@ -102,4 +97,4 @@ export const Input: FC<Props> = (props) => {
       {message && <p className={clsx(styles['msg'])}>{message}</p>}
     </div>
   )
-}
+})
