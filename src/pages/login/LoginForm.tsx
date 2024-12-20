@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 
 const defaultFrom = { password: '', username: '' }
 export const LoginForm = () => {
-  const { loginWithCredential, data } = useLogin<LoginInput>()
+  const { loginWithCredential, data, error } = useLogin<LoginInput>()
   const navigate = useNavigate()
 
   const { register, handleSubmit } = useForm<LoginInput>()
@@ -31,6 +31,10 @@ export const LoginForm = () => {
       }
     }
   }, [data?.accessToken, navigate])
+
+  useEffect(() => {
+    if (error) setErrorMessage({ ...defaultFrom, password: 'Invalid username or password' })
+  }, [error])
 
   return (
     <div className='space-y-5'>
