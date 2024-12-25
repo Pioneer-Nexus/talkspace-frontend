@@ -1,5 +1,5 @@
 import { Button, Input } from '@/components'
-import { useLogin } from '@/graphql/mutations/useLogin'
+import { useUserLogin } from '@/graphql/mutations/useUserLogin'
 import { AuthService } from '@/services'
 import { LoginInput, validateLogin } from '@/validations'
 import { useEffect, useState } from 'react'
@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 
 const defaultFrom = { password: '', username: '' }
 export const LoginForm = () => {
-  const { loginWithCredential, data, error } = useLogin<LoginInput>()
+  const { loginWithCredential, data, error } = useUserLogin<LoginInput>()
   const navigate = useNavigate()
 
   const { register, handleSubmit } = useForm<LoginInput>()
@@ -25,7 +25,8 @@ export const LoginForm = () => {
   }
   useEffect(() => {
     if (data?.accessToken) {
-      const result = AuthService.instance.login(data.accessToken)
+      console.log(data)
+      const result = AuthService.instance.login(data.accessToken, data.user)
       if ('success' in result && result.success) {
         navigate(result.redirectTo)
       }

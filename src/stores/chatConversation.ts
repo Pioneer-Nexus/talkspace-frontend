@@ -1,3 +1,4 @@
+import { UserDto, UserRoomDto } from '@/graphql/graphql'
 import messageData from '@/mock-data/messages.json'
 import { create } from 'zustand'
 export interface Message {
@@ -22,15 +23,23 @@ type State = {
   roomId: string
   participants: Participant[]
   messages: Message[]
+  users: UserDto[]
+}
+
+type ChatRoomParams = {
+  roomId: string
+  users: UserRoomDto[]
 }
 
 type Action = {
-  updateChatConversations: (roomId: string) => void
   updateChatConversation: (message: Message) => void
+  updateChatConversations: (roomId: string) => void
+  updateChatRoom: (input: ChatRoomParams) => void
 }
 
 export const useChatConversation = create<State & Action>((set) => ({
   roomId: '',
+  users: [],
   messages: [],
   participants: [],
   updateChatConversations: (roomId: string) => {
@@ -39,5 +48,8 @@ export const useChatConversation = create<State & Action>((set) => ({
   },
   updateChatConversation: (message: Message) => {
     set((state) => ({ ...state, messages: [message, ...state.messages] }))
+  },
+  updateChatRoom: ({ roomId, users }) => {
+    set((state) => ({ ...state, roomId, users: users.map((user) => user.user) }))
   },
 }))

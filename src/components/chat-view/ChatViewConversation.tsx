@@ -1,24 +1,25 @@
-import { useChatConversation } from '@/stores/chatConversation'
-import { FC } from 'react'
+import { useGetRoomMessages } from '@/graphql/queries'
+import { AuthService } from '@/services'
+import { useChatConversation } from '@/stores'
+import { FC, useRef } from 'react'
 import { ChatViewMessage } from './ChatViewMessage'
 
 export const ChatViewConversation: FC = () => {
-  const { messages } = useChatConversation()
+  const { roomId, users } = useChatConversation((state) => state)
+  const { data } = useGetRoomMessages({ roomIdInput: roomId, paginationOptionInput: { page: 0, pageSize: 10 } })
+  const auth = useRef(AuthService.instance.getAuth())
 
-  const x = messages
-  // .map((item) => ({ ...item, timestamp: randomizeTime('0s', '5m') }))
-  // .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
-  // .filter((item, i) => i < 4)
   return (
     <div className='scrollbar-thin flex h-[calc(100vh-75px-56px)] flex-col-reverse overflow-auto p-2'>
-      {x.map((item, i, items) => {
-        const isAvatar = i === items.length - 1 || items[i + 1].sender !== item.sender
-        return (
-          <ChatViewMessage isAvatar={isAvatar} me={item.sender === 'user'} time={item.timestamp} key={item.id}>
-            {item.message}
-          </ChatViewMessage>
-        )
-      })}
+      {data &&
+        data.data.map((item, i, items) => {
+          const isAvatar = i === items.length - 1 || items[i + 1].authorId !== item.authorId
+          return (
+            <ChatViewMessage isAvatar={isAvatar} me={item.authorId === auth.current._id} time={item.createdAt} key={item._id}>
+              {item.content}
+            </ChatViewMessage>
+          )
+        })}
     </div>
   )
 }
