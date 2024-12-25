@@ -38,7 +38,6 @@ export const useChatConversation = create<State & Action>((set) => ({
     set((state) => ({ ...state, messages: data, roomId }))
   },
   updateChatConversation: (message: Message) => {
-    console.log(message)
     set((state) => ({ ...state, messages: [message, ...state.messages] }))
   },
 }))

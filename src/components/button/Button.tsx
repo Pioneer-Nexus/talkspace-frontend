@@ -1,6 +1,6 @@
 import LoadingIcon from '@/assets/images/svgs/loading.svg'
 import clsx from 'clsx'
-import { FC, MouseEvent, PropsWithChildren, ReactNode } from 'react'
+import { CSSProperties, FC, MouseEvent, PropsWithChildren, ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './styles.module.css'
 
@@ -19,6 +19,7 @@ interface Props extends PropsWithChildren {
   disabled?: boolean
   loading?: boolean
   block?: boolean
+  style?: CSSProperties
   className?: string
   onClick?: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
 }
@@ -36,6 +37,7 @@ export const Button: FC<Props> = (props) => {
     href,
     block,
     className,
+    style,
     onClick,
   } = props
 
@@ -51,6 +53,7 @@ export const Button: FC<Props> = (props) => {
       block && styles['block'],
       className,
     ),
+    style,
     onClick,
   }
 
