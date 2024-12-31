@@ -7,6 +7,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
 const defaultFrom = { password: '', username: '' }
+
 export const LoginForm = () => {
   const { loginWithCredential, data, error } = useUserLogin<LoginInput>()
   const navigate = useNavigate()
@@ -25,7 +26,6 @@ export const LoginForm = () => {
   }
   useEffect(() => {
     if (data?.accessToken) {
-      console.log(data)
       const result = AuthService.instance.login(data.accessToken, data.user)
       if ('success' in result && result.success) {
         navigate(result.redirectTo)

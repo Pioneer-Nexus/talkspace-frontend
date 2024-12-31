@@ -1,19 +1,6 @@
-import { useQuery } from '@apollo/client'
-import { PaginationOptionDto, Query } from '../graphql'
-import { GET_ROOM_MESSAGES } from './getRoomMessages'
+import { QueryHookOptions, useQuery } from '@apollo/client'
+import { GET_ROOM_MESSAGES, GetRoomMessageResults, GetRoomMessageVariables } from './getRoomMessages'
 
-type TParams = {
-  paginationOptionInput: PaginationOptionDto
-  roomIdInput: string
-}
-
-export const useGetRoomMessages = (input: TParams) => {
-  const { data: _data, loading, error } = useQuery<Pick<Query, 'getRoomMessages'>>(GET_ROOM_MESSAGES, { variables: input })
-  const data = _data?.getRoomMessages
-
-  if (error) {
-    console.error(error)
-  }
-
-  return { data, loading, error }
+export const useGetRoomMessages = (options: QueryHookOptions<GetRoomMessageResults, GetRoomMessageVariables>) => {
+  return useQuery<GetRoomMessageResults, GetRoomMessageVariables>(GET_ROOM_MESSAGES, { ...options })
 }

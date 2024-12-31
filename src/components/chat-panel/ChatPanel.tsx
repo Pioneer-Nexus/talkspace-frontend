@@ -13,7 +13,7 @@ export const ChatPenal = () => {
     updateChatRoom({ roomId, users })
   }
   const { data } = useGetUserChatRoom({ page: 0, pageSize: 10 })
-  console.log(data)
+
   return (
     <div className='scrollbar-thin h-screen w-[300px] overflow-auto bg-stone-200'>
       {data &&

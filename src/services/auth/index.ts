@@ -55,7 +55,6 @@ export class AuthService {
   }
 
   private setAuth = (params: User): void => {
-    console.log(params)
     this._id = params._id
     this.email = params.email
     this.name = params.name

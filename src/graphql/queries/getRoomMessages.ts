@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client'
+import { PaginationOptionDto, Query } from '../graphql'
 
 export const GET_ROOM_MESSAGES = gql`
   query GetRoomMessages($paginationOptionInput: PaginationOptionDto!, $roomIdInput: String!) {
@@ -24,3 +25,9 @@ export const GET_ROOM_MESSAGES = gql`
     }
   }
 `
+export type GetRoomMessageVariables = {
+  paginationOptionInput: PaginationOptionDto
+  roomIdInput: string
+}
+
+export type GetRoomMessageResults = Pick<Query, 'getRoomMessages'>

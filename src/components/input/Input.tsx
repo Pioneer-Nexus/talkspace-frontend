@@ -26,6 +26,7 @@ interface Props {
   label?: boolean
   onFocus?: (event: ChangeEvent<HTMLInputElement>) => void
   onEnter?: () => void
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
   extra?: JSX.Element
 }
 
@@ -45,6 +46,7 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
     readonly = false,
     onFocus,
     onEnter = () => {},
+    onChange = () => {},
     extra,
     ...restProps
   } = props
@@ -56,6 +58,7 @@ export const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
     disabled,
     readOnly: readonly,
     onFocus,
+    onChange,
     ...restProps,
   }
 
