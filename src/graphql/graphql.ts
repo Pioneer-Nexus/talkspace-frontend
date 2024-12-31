@@ -56,15 +56,21 @@ export type ChatRoomDto = {
 };
 
 export type CreateMessageInput = {
-  /** Example field (placeholder) */
-  exampleField: Scalars['Int']['input'];
+  content: Scalars['String']['input'];
+  files?: InputMaybe<Array<Scalars['String']['input']>>;
+  isTagAll?: InputMaybe<Scalars['Boolean']['input']>;
+  quoteMessageId?: InputMaybe<Scalars['String']['input']>;
+  roomId: Scalars['String']['input'];
+  tagUsers?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 
 export type CreateNotificationDto = {
   content?: InputMaybe<Scalars['String']['input']>;
   data?: InputMaybe<Scalars['JSON']['input']>;
   priority?: InputMaybe<NotificationPriority>;
+  receiverUsers: Array<Scalars['String']['input']>;
   title: Scalars['String']['input'];
+  type?: InputMaybe<NotificationType>;
 };
 
 export type CreatedAuthDto = {
@@ -116,15 +122,18 @@ export type CurrentAuthDto = {
   username?: Maybe<Scalars['String']['output']>;
 };
 
-export type Message = {
-  __typename?: 'Message';
+export type MessageDto = {
+  __typename?: 'MessageDto';
   _id: Scalars['String']['output'];
+  authorId: Scalars['String']['output'];
   content: Scalars['String']['output'];
   createdAt: Scalars['DateTimeISO']['output'];
   deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  isTagAll?: Maybe<Scalars['Boolean']['output']>;
+  quoteMessageId?: Maybe<Scalars['String']['output']>;
+  roomId: Scalars['String']['output'];
   status: MessageStatus;
-  type: MessageType;
-  updatedAt: Scalars['DateTimeISO']['output'];
+  tagUsers?: Maybe<Array<Scalars['String']['output']>>;
 };
 
 export enum MessageStatus {
@@ -135,20 +144,12 @@ export enum MessageStatus {
   Sent = 'SENT'
 }
 
-export enum MessageType {
-  Audio = 'AUDIO',
-  File = 'FILE',
-  Image = 'IMAGE',
-  Message = 'MESSAGE',
-  Video = 'VIDEO'
-}
-
 export type Mutation = {
   __typename?: 'Mutation';
   acceptToJoinChatRoom: UserRoomDto;
   addNewUserToChatRoom: ChatRoomDto;
   createChatRoom: CreatedChatRoomResponseDto;
-  createMessage: Message;
+  createMessage: MessageDto;
   /** Login with username and password */
   loginWithCredential: AuthDto;
   /** Refresh token and rotate it */
@@ -156,11 +157,9 @@ export type Mutation = {
   /** Register new user with username and password */
   registerUserWithCredential: CreatedAuthDto;
   removeChatRoom: Scalars['String']['output'];
-  removeMessage: Message;
   removeUserFromChatRoom: ChatRoomDto;
   sendNotification: NotificationDto;
   updateChatRoom: UpdatedChatRoomResponseDto;
-  updateMessage: Message;
 };
 
 
@@ -182,7 +181,7 @@ export type MutationCreateChatRoomArgs = {
 
 
 export type MutationCreateMessageArgs = {
-  createMessageInput: CreateMessageInput;
+  input: CreateMessageInput;
 };
 
 
@@ -207,11 +206,6 @@ export type MutationRemoveChatRoomArgs = {
 };
 
 
-export type MutationRemoveMessageArgs = {
-  id: Scalars['Int']['input'];
-};
-
-
 export type MutationRemoveUserFromChatRoomArgs = {
   roomId: Scalars['String']['input'];
   userId: Scalars['String']['input'];
@@ -227,11 +221,6 @@ export type MutationUpdateChatRoomArgs = {
   chatRoom: UpdatedChatRoomDto;
 };
 
-
-export type MutationUpdateMessageArgs = {
-  updateMessageInput: UpdateMessageInput;
-};
-
 export type NotificationDto = {
   __typename?: 'NotificationDto';
   _id: Scalars['String']['output'];
@@ -239,12 +228,10 @@ export type NotificationDto = {
   createdAt: Scalars['DateTimeISO']['output'];
   data?: Maybe<Scalars['JSON']['output']>;
   deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
-  isSent?: Maybe<Scalars['Boolean']['output']>;
   notifyDate?: Maybe<Scalars['DateTimeISO']['output']>;
   priority?: Maybe<NotificationPriority>;
   status?: Maybe<NotificationStatus>;
   title: Scalars['String']['output'];
-  updatedAt: Scalars['DateTimeISO']['output'];
 };
 
 export enum NotificationPriority {
@@ -254,6 +241,7 @@ export enum NotificationPriority {
 }
 
 export enum NotificationStatus {
+  Fail = 'FAIL',
   Read = 'READ',
   Received = 'RECEIVED',
   Sending = 'SENDING',
@@ -261,9 +249,30 @@ export enum NotificationStatus {
   Waiting = 'WAITING'
 }
 
+export enum NotificationType {
+  AcceptToJoinRoom = 'ACCEPT_TO_JOIN_ROOM',
+  BeingAcceptedToJoinRoom = 'BEING_ACCEPTED_TO_JOIN_ROOM',
+  NewInvitationToJoinRoom = 'NEW_INVITATION_TO_JOIN_ROOM',
+  NewMessage = 'NEW_MESSAGE',
+  NewMessageTagged = 'NEW_MESSAGE_TAGGED',
+  NewRequestToJoinRoom = 'NEW_REQUEST_TO_JOIN_ROOM',
+  Notification = 'NOTIFICATION'
+}
+
 export type PaginatedChatRoomDto = {
   __typename?: 'PaginatedChatRoomDto';
   data: Array<ChatRoomDto>;
+  hasNext: Scalars['Boolean']['output'];
+  hasPrev: Scalars['Boolean']['output'];
+  page: Scalars['Float']['output'];
+  pageSize: Scalars['Float']['output'];
+  totalPage: Scalars['Float']['output'];
+  totalRecord: Scalars['Float']['output'];
+};
+
+export type PaginatedMessageDto = {
+  __typename?: 'PaginatedMessageDto';
+  data: Array<MessageDto>;
   hasNext: Scalars['Boolean']['output'];
   hasPrev: Scalars['Boolean']['output'];
   page: Scalars['Float']['output'];
@@ -291,10 +300,11 @@ export type PaginationOptionDto = {
 export type Query = {
   __typename?: 'Query';
   getChatRoomPendingInvites: PaginatedUserRoomDto;
+  /** Get paginated messages of a room by id of the room */
+  getRoomMessages: PaginatedMessageDto;
   getUserChatRooms: PaginatedChatRoomDto;
   /** Just used to desmontrate the use of @CurrentUser */
   hello: CurrentAuthDto;
-  message: Message;
 };
 
 
@@ -304,13 +314,14 @@ export type QueryGetChatRoomPendingInvitesArgs = {
 };
 
 
-export type QueryGetUserChatRoomsArgs = {
-  paginationOption?: InputMaybe<PaginationOptionDto>;
+export type QueryGetRoomMessagesArgs = {
+  paginationOptionInput: PaginationOptionDto;
+  roomIdInput: Scalars['String']['input'];
 };
 
 
-export type QueryMessageArgs = {
-  id: Scalars['Int']['input'];
+export type QueryGetUserChatRoomsArgs = {
+  paginationOption?: InputMaybe<PaginationOptionDto>;
 };
 
 export type RegisterAuthLocalInput = {
@@ -330,12 +341,6 @@ export enum RoomType {
   Private = 'PRIVATE',
   Public = 'PUBLIC'
 }
-
-export type UpdateMessageInput = {
-  /** Example field (placeholder) */
-  exampleField?: InputMaybe<Scalars['Int']['input']>;
-  id: Scalars['Int']['input'];
-};
 
 export type UpdatedChatRoomDto = {
   _id: Scalars['String']['input'];

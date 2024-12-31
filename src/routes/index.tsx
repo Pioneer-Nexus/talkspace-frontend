@@ -37,14 +37,6 @@ const RouteComponent = () => {
       >
         <Route element={<InitialPage />} index />
         <Route element={<ProfilePage />} path='profile' />
-
-        <Route path={testURL}>
-          <Route index element={<TestPage />} />
-          <Route path='button' element={<ButtonTestPage />} />
-          <Route path='avatar' element={<AvatarTestPage />} />
-          <Route path='input' element={<InputTestPage />} />
-          <Route path='badge' element={<BadgeTestPage />} />
-        </Route>
       </Route>
       <Route
         element={
@@ -54,6 +46,13 @@ const RouteComponent = () => {
         }
         path='/sign-in'
       />
+      <Route path={testURL}>
+        <Route index element={<TestPage />} />
+        <Route path='button' element={<ButtonTestPage />} />
+        <Route path='avatar' element={<AvatarTestPage />} />
+        <Route path='input' element={<InputTestPage />} />
+        <Route path='badge' element={<BadgeTestPage />} />
+      </Route>
       <Route element={<NotFound />} path='*' />
     </Routes>
   )

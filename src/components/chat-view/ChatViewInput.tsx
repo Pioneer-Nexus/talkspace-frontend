@@ -2,38 +2,48 @@ import ClipIcon from '@/assets/images/svgs/clip.svg'
 import SendIcon from '@/assets/images/svgs/send.svg'
 import SmileIcon from '@/assets/images/svgs/smile.svg'
 
+import { useCreateMessage } from '@/graphql/mutations/useCreateMessage'
 import { useChatConversation } from '@/stores'
-import { ChangeEvent, useState } from 'react'
-import { v4 as uuidv4 } from 'uuid'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { Button } from '../button'
 import { Input } from '../input'
 
+type Types = {
+  message: string
+  isDisabledButton: boolean
+}
+const defaultViewInput = { message: '', isDisabledButton: false }
+
 export const ChatViewInput = () => {
-  const [message, setMessage] = useState<string>('')
-  const { updateChatConversation, roomId } = useChatConversation()
+  const [chatInput, setChatInput] = useState<Types>(defaultViewInput)
+  const { roomId, updateMessage } = useChatConversation()
+  const [dispatch, { data }] = useCreateMessage()
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setMessage(e.target.value)
+    if (e.target.value === '') setChatInput({ message: '', isDisabledButton: true })
+    else setChatInput({ message: e.target.value, isDisabledButton: false })
   }
 
   const handleUserChat = () => {
-    updateChatConversation({
-      id: uuidv4(),
-      timestamp: new Date().toISOString(),
-      sender: 'user',
-      message: message,
-      roomId: roomId,
-      metadata: {
-        read: true,
-        type: 'text',
-      },
-    })
-    setMessage('')
+    if (chatInput.message === '') return
+    dispatch({ variables: { input: { roomId, content: chatInput.message } } })
+    setChatInput(defaultViewInput)
   }
+  useEffect(() => {
+    setChatInput(defaultViewInput)
+  }, [roomId])
+
+  useEffect(() => {
+    if (data?.createMessage) {
+      updateMessage(data.createMessage)
+    }
+  }, [data])
+
   return (
     <div className='flex items-center gap-2 p-2'>
       <Input
         size='large'
-        value={message}
+        value={chatInput.message}
         onChange={handleChange}
         onEnter={handleUserChat}
         extra={
@@ -43,7 +53,7 @@ export const ChatViewInput = () => {
           </>
         }
       />
-      <Button shape='circle' type='primary' icon={<SendIcon />} onClick={handleUserChat} />
+      <Button shape='circle' type='primary' disabled={chatInput.isDisabledButton} icon={<SendIcon />} onClick={handleUserChat} />
     </div>
   )
 }

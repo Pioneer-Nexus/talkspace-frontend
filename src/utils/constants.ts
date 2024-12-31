@@ -3,6 +3,7 @@ import { appConfig } from '@/configs'
 export const LOCAL_STORAGE = {
   THEME: 'theme',
   ACCESS_TOKEN: 'access_token',
+  AUTH_INFORMATION: 'auth_information',
 }
 export const APP_TITLE = {
   TEST_PAGE: {

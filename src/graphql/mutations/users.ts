@@ -14,6 +14,14 @@ export const LOGIN_WITH_CREDENTIAL = gql`
       type
       updatedAt
       username
+      user {
+        _id
+        createdAt
+        deletedAt
+        email
+        name
+        updatedAt
+      }
     }
   }
 `
